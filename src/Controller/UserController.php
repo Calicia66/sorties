@@ -23,13 +23,16 @@ class UserController extends AbstractController
         //création de la date automatiquement
         $User->setDateCreation(new \DateTime());
         $registerForm =$this->createForm(RegisterType::class, $User);
-        //$Bucketlist->setDateCreated(new \DateTime());
+       //on envoie le formulaire dans le request
         $registerForm ->handleRequest($request);
         //on verifie le formulaire avant de le soumettre
         if ($registerForm->isSubmitted() && $registerForm->isValid()) {
             //on crée un message d'alert à afficher en cas de succès
             $this->addFlash("success", "Données ajoutées avec succès");
-            //dump($Bucketlist);
+            //Date de création du profil
+            $User->setDateCreation(new \DateTime());
+            $User->setAdministrateur(0);
+            $User->setActif(0);
             //on envoie les données à doctrine sur le repository
             $hasher = $encoder->encodePassword($User, $User->getPassword());
             $User->setPassword($hasher);

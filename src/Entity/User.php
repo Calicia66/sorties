@@ -62,14 +62,16 @@ private $password;
         $this->userName = $userName;
     }
     /**
-     * @ORM\Column (type="binary")
+     * @ORM\Column (type="boolean")
      */
 private $administrateur;
     /**
-     * @ORM\Column (type="binary")
+     * @ORM\Column (type="boolean")
      */
 private $actif;
-
+    /**
+     * @ORM\Column (type="datetime")
+     */
 private $dateCreation;
 
 //pas sauvegardé dans la base
@@ -222,10 +224,16 @@ private $dateCreation;
     /**
      * @return mixed
      */
-    public function getRoles()
+
+        public function getRoles(): array
     {
-        return ['ROLE_USER'];
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
+
 
 
     /**
