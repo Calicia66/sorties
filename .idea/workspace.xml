@@ -6,25 +6,24 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:Login_logout" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f817835a-ff46-432f-b909-3af656a16903" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/layout.html.twig" afterDir="false" />
+    <list default="true" id="f817835a-ff46-432f-b909-3af656a16903" name="Default Changelist" comment="Generation des 3 fichiers controller user form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/RegisterType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RegisterType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/home.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +155,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -179,6 +179,14 @@
       <workItem from="1600769666521" duration="1872000" />
       <workItem from="1600780070091" duration="362000" />
     </task>
+    <task id="LOCAL-00001" summary="Generation des 3 fichiers controller user form">
+      <created>1600789765466</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1600789765466</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,12 +206,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Generation des 3 fichiers controller user form" />
+    <option name="LAST_COMMIT_MESSAGE" value="Generation des 3 fichiers controller user form" />
   </component>
   <component name="WindowStateProjectService">
     <state x="470" y="241" key="#Composer" timestamp="1600759049574">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="470" y="241" key="#Composer/0.0.1366.728/-1920.-313.1280.680@0.0.1366.728" timestamp="1600759049574" />
+    <state x="407" y="0" key="#PHP" timestamp="1600790787623">
+      <screen x="0" y="0" width="1242" height="570" />
+    </state>
+    <state x="407" y="0" key="#PHP/0.0.1242.570@0.0.1242.570" timestamp="1600790787623" />
     <state x="114" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600759009810">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -212,6 +226,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="405" y="163" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/-1920.-313.1280.680@0.0.1366.728" timestamp="1600768428846" />
+    <state x="414" y="0" key="#com.intellij.ide.util.MemberChooser" timestamp="1600791216569">
+      <screen x="0" y="0" width="1242" height="570" />
+    </state>
+    <state x="414" y="0" key="#com.intellij.ide.util.MemberChooser/0.0.1242.570@0.0.1242.570" timestamp="1600791216569" />
+    <state x="351" y="40" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600792543382">
+      <screen x="0" y="0" width="1242" height="570" />
+    </state>
+    <state x="351" y="40" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1242.570@0.0.1242.570" timestamp="1600792543382" />
     <state x="495" y="132" key="FileChooserDialogImpl" timestamp="1600770462175">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -229,16 +251,5 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="161" y="7" key="SettingsEditor/0.0.1366.728/-1920.-313.1280.680@0.0.1366.728" timestamp="1600759438584" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/templates/main/home.html.twig</url>
-          <line>6</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
