@@ -25,18 +25,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f817835a-ff46-432f-b909-3af656a16903" name="Default Changelist" comment="Premiere version">
-      <change afterPath="$PROJECT_DIR$/src/Controller/EvenementController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Evenement.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/EvenementRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/evenement/add.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/evenement/detail.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/evenement/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/evenement/list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="f817835a-ff46-432f-b909-3af656a16903" name="Default Changelist" comment="Branche Evenement base sans formulaire">
+      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_22_09_2020_15_08.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Evenement" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -199,7 +191,7 @@
       <updated>1600758643347</updated>
       <workItem from="1600758644433" duration="4151000" />
       <workItem from="1600769666521" duration="1872000" />
-      <workItem from="1600780070091" duration="6560000" />
+      <workItem from="1600780070091" duration="8912000" />
     </task>
     <task id="LOCAL-00001" summary="Premiere version">
       <created>1600780474036</created>
@@ -208,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600780474036</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Branche Evenement base sans formulaire">
+      <created>1600787097445</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1600787097445</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +240,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Premiere version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Premiere version" />
+    <MESSAGE value="Branche Evenement base sans formulaire" />
+    <option name="LAST_COMMIT_MESSAGE" value="Branche Evenement base sans formulaire" />
   </component>
   <component name="WindowStateProjectService">
     <state x="470" y="241" key="#Composer" timestamp="1600759049574">
@@ -281,10 +281,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="161" y="7" key="SettingsEditor/0.0.1366.728/-1920.-313.1280.680@0.0.1366.728" timestamp="1600759438584" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1600780497290">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1600787120835">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1600780497290" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1600787120835" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
