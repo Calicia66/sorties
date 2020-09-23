@@ -1,15 +1,20 @@
 {% extends 'layout.html.twig' %}
 
 {% block main %}
-    <h2> Ajouter un évènement </h2>
+    <h2 class="text-center" > Ajouter un évènement </h2>
+    <div class="form-group">
 
-    {{ form_start(eventForm) }}
-    {{ form_widget(eventForm) }}
 
-    <button type="submit">Envoyer</button>
-    {{ form_end(eventForm) }}
 
-    {# todo: afficher le formulaire qui permet d'entrer des données #}
+    {# Afficher le formulaire qui permet d'entrer des données  et mettre un bouton Validation #}
+    {{ form_start(eventform) }}
+    {{ form_widget(eventform) }}
+
+    <button TYPE="submit" class="btn btn-primary">Valider</button>
+        <button type="reset" class="btn btn-primary">Annuler</button>
+    {{ form_end(eventform) }}
+
+    </div>
 {% endblock %}
 
-{% block title %} Ajoutez votre évènement {% endblock %}
+{% block title %} Ajoutez votre évènement |{{ parent() }}{% endblock %}

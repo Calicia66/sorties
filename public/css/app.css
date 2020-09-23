@@ -1,0 +1,19 @@
+body {
+    background-color: darkgray;
+    font-family: Arial;
+
+}
+.flash {
+    padding: 20px;
+    display: block;
+    font-size: 24px;
+    color: white;
+}
+
+.flash-success {
+    background-color: greenyellow;
+}
+
+.flash-error{
+    background-color: red;
+}

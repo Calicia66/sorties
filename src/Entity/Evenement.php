@@ -28,9 +28,9 @@ class Evenement
     private $datedebut;
 
     /**
-     *@ORM\Column (type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    public $duree;
+    private $duree;
 
     /**
      * @ORM\Column(type="date")

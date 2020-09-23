@@ -3,7 +3,13 @@
 {% block main %}
     <h2> Liste des sorties</h2>
 
-    {# todo: afficher la liste des sorties #}
+    //afficher la liste des sorties
+    {%  for evenement in sorties %}
+    <div class="event">
+        {{ evenement.list.name }}
+        {{ evenement.detail.name }}
+    </div>
+    {%  endfor %}
 {% endblock %}
 
 {% block title %} Les sorties ! {% endblock %}

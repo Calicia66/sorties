@@ -14,10 +14,11 @@
 <!-- body page -->
 <div class="container-fluid">
     <!-- header section page -->
-    <div class="header">
-        <h1>Je suis le site en construction Sorties.com </h1>
-        <!-- navbar section -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <div class="header">
+            <h1>Je suis le site en construction Sorties.com </h1>
+            <!-- navbar section -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,11 +53,22 @@
             </div>
         </nav>
     </div>
+
+    <!--Affichage des messages flashs-->
+    {% for label, messages in app.flashes %}
+    {%  for message in messages %}
+    <div class="flash flash-{{ label }}">
+        {{ message }}
+    </div>
+    {%  endfor %}
+    {% endfor %}
+
     <!-- main section page -->
     <main>
         {% block main %} {% endblock %}
     </main>
     <!--  footer page  -->
+
     <div class="footer">
         <ul class="copyright">
             <li>&copy; Eni Ecole Informatique {{ "now"| date("Y") }}.</li><li>Credits: <a href="#">D2WM -> Les Crouton - Joshua SAO / Louise A / Audray T</a></li>
