@@ -3,7 +3,14 @@
 {% block main %}
     <h2> Ajouter un évènement </h2>
 
-    {# todo: afficher le formulaire qui permet d'entrer des données #}
+    {# Afficher le formulaire qui permet d'entrer des données  et mettre un bouton Validation #}
+    {{ form_start(eventform) }}
+    {{ form_widget(eventform) }}
+
+    <button TYPE="submit">Valider</button>
+    {{ form_end(eventform) }}
+
+
 {% endblock %}
 
-{% block title %} Ajoutez votre évènement {% endblock %}
+{% block title %} Ajoutez votre évènement |{{ parent() }}{% endblock %}

@@ -3,7 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Evenement;
+use App\Form\EventType;
+use Doctrine\ORM\EntityManagerInterface;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class EvenementController extends AbstractController
@@ -18,9 +22,11 @@ class EvenementController extends AbstractController
         $sortieRepo = $this->getDoctrine()->getRepository(Evenement::class);
         //findAll permet de récupérer toute les sorties enregistrées.
         $sorties = $sortieRepo->findAll();
-        dump($sorties);
 
-        return $this->render('evenement/list.html.twig', []);
+
+        return $this->render('evenement/list.html.twig', [
+            "sorties"=>$sorties
+        ]);
     }
 
     /**
@@ -39,9 +45,35 @@ class EvenementController extends AbstractController
      */
     //méthode create qui permet d'afficher sur une page le formulaire
     //qui enregistre les données en BDD
-    public function create()
+    public function add(EntityManagerInterface $em, Request $request)
     {
-        //@todo: traiter le formulaire
-        return $this->render('evenement/add.html.twig');
+        // Creer une instance de mon entity
+        $event = new Evenement();
+
+        //Creer mon formulaire
+        $eventform = $this->createForm(EventType::class, $event);
+
+        //Alimenter avec les données fournis dans le formulaire
+        $eventform->handleRequest($request);
+
+        //si formulaire valider alors  données sauvegarder
+        if ($eventform->isSubmitted()){
+            $em->persist($event);
+            $em->flush();
+
+            //Afficher un message flash
+            $this->addFlash('success','Votre evenement a bien été enregistrer');
+
+
+            //Redirige l utilisateur sur la page detail
+            return  $this->redirectToRoute('evenement_detail',[
+                'id'=>$event->getId()
+            ]);
+        }
+
+
+        return $this->render('evenement/add.html.twig', [
+            "eventform"=> $eventform->createView()
+        ]);
     }
 }
