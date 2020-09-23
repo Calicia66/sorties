@@ -27,12 +27,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f817835a-ff46-432f-b909-3af656a16903" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EvenementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvenementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evenement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evenement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/EventType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EventType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evenement/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evenement/add.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/EvenementRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EvenementRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evenement/detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evenement/detail.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evenement/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evenement/list.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +46,9 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="Evenement" />
   </component>
   <component name="Git.Settings">
     <option name="PUSH_TAGS">

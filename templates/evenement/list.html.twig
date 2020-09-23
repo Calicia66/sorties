@@ -3,11 +3,13 @@
 {% block main %}
     <h2> Liste des sorties</h2>
 
-    //afficher la liste des sorties
-    {%  for evenement in sorties %}
+    {%  for event in events %}
     <div class="event">
-        {{ evenement.list.name }}
-        {{ evenement.detail.name }}
+
+        <a href="{{ path('evenement_detail', {'id': event.id}) }}" title="En voir plus sur l'évènement {{ event.nom }}">
+            {{ event.nom }}
+        </a>
+
     </div>
     {%  endfor %}
 {% endblock %}

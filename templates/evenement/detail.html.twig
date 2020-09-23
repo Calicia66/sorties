@@ -1,9 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block main %}
-    <h2> Détail d'une sortie</h2>
+    <h2> Détail de la sortie</h2>
 
-    {# todo: afficher les détails de la sortie selectionnée #}
+        <div class="event"> {{ event.nom }} </div>
+        <div> {{ event.descriptioninfos }}</div>
+
+
+
 {% endblock %}
 
-{% block title %} Titre de notre sortie! {% endblock %}
+{% block title %} Les sorties ! {% endblock %}

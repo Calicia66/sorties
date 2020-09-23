@@ -29,6 +29,9 @@ class EventType extends AbstractType
         ->add('nom', Texttype::class, [    'attr' => ['class' => 'form-control'],
                 'label'=> 'Titre de l evenement'])
 
+            ->add('descriptioninfos', TextareaType::class, [    'attr' => ['class' => 'form-control'],
+                'label'=> 'Descriptif de l evenement'])
+
 
             //Creation du champ date de debut
           ->add('datedebut', DateType::class, [  'attr' => ['class' => 'form-control'],
@@ -43,7 +46,7 @@ class EventType extends AbstractType
 
             //Creation du champ duree
             ->add('duree',NumberType::class,[  'attr' => ['class' => 'form-control'],
-        'label'=> "Durée "
+        'label'=> "Durée"
     ])
             //Creation du champ date de cloture
 
