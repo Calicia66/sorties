@@ -22,60 +22,66 @@ class User implements UserInterface
     /**
      * @ORM\Column (type="string", length=30)
      */
-private $userName;
+private $username;
     /**
      * @ORM\Column (type="string", length=30)
      */
-private $lastName;
-
+private $nom;
 
     /**
      * @ORM\Column (type="string", length=30)
      */
-private $firstName;
+private $prenom;
     /**
      * @ORM\Column (type="string", length=15)
      */
-private $phoneNumber;
+private $telephone;
     /**
      * @ORM\Column (type="string", length=20)
      */
 private $email;
     /**
-     * @ORM\Column (type="string", length=20)
+     * @ORM\Column (type="string", length=255)
      */
 private $password;
+    /**
+     * @ORM\Column (type="boolean")
+     */
+    private $administrateur;
+    /**
+     * @ORM\Column (type="boolean")
+     */
+    private $actif;
+    /**
+     * @ORM\Column (type="datetime")
+     */
+    private $dateCreation;
+
+    /**
+     *@ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="User")
+     *
+     */
+   private $campus;
+//pas sauvegardé dans la base
+    private $roles;
+
+
 
     /**
      * @return mixed
      */
-    public function getUserName()
+    public function getUsername()
     {
-        return $this->userName;
+        return $this->username;
     }
 
     /**
-     * @param mixed $userName
+     * @param mixed $username
      */
-    public function setUserName($userName): void
+    public function setUsername($username): void
     {
-        $this->userName = $userName;
+        $this->username = $username;
     }
-    /**
-     * @ORM\Column (type="boolean")
-     */
-private $administrateur;
-    /**
-     * @ORM\Column (type="boolean")
-     */
-private $actif;
-    /**
-     * @ORM\Column (type="datetime")
-     */
-private $dateCreation;
-
-//pas sauvegardé dans la base
-    private $roles;
 
     public function getId(): ?int
     {
@@ -85,54 +91,54 @@ private $dateCreation;
     /**
      * @return mixed
      */
-    public function getLastName()
+    public function getNom()
     {
-        return $this->lastName;
+        return $this->nom;
     }
 
     /**
-     * @param mixed $lastName
+     * @param mixed $nom
      * @return User
      */
-    public function setLastName($lastName)
+    public function setNom($nom)
     {
-        $this->lastName = $lastName;
+        $this->nom = $nom;
         return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getFirstName()
+    public function getPrenom()
     {
-        return $this->firstName;
+        return $this->prenom;
     }
 
     /**
-     * @param mixed $firstName
+     * @param mixed $prenom
      * @return User
      */
-    public function setFirstName($firstName)
+    public function setPrenom($prenom)
     {
-        $this->firstName = $firstName;
+        $this->prenom = $prenom;
         return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getPhoneNumber()
+    public function getTelephone()
     {
-        return $this->phoneNumber;
+        return $this->telephone;
     }
 
     /**
-     * @param mixed $phoneNumber
+     * @param mixed $telphone
      * @return User
      */
-    public function setPhoneNumber($phoneNumber)
+    public function setTelephone($telephone)
     {
-        $this->phoneNumber = $phoneNumber;
+        $this->telephone = $telephone;
         return $this;
     }
 
@@ -220,6 +226,23 @@ private $dateCreation;
     public function setDateCreation($dateCreation): void
     {
         $this->dateCreation = $dateCreation;
+    }
+    /**
+     * @return mixed
+     */
+    public function getCampus()
+    {
+        return $this->campus;
+    }
+
+    /**
+     * @param mixed $campus
+     * @return User
+     */
+    public function setCampus($campus)
+    {
+        $this->campus = $campus;
+        return $this;
     }
     /**
      * @return mixed

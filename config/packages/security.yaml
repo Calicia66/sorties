@@ -1,5 +1,4 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         our_db_provider:
             entity:
@@ -10,14 +9,18 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            pattern: ^⁄
+            pattern:  ^/
             provider: our_db_provider
             anonymous: true
-            form_login:
-                login_path: login
-                check_path: login
+            lazy: true
+            guard:
+                authenticators:
+                    - App\Security\AppAuthenticator
             logout:
                 path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+
     encoders:
         App\Entity\User:
             algorithm: bcrypt

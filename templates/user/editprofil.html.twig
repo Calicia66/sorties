@@ -1,10 +1,8 @@
 {% extends ("main/layout.html.twig") %}
-
 {% block title %}
     Inscription
 {% endblock %}
 {% block main %}
-    {% form_theme registerForm 'bootstrap_4_layout.html.twig' %}
     {{  form_start(registerForm) }}
 
 
@@ -12,6 +10,6 @@
     {{ form_errors(registerForm) }}
 
     <br>
-    <button class="btn btn-primary" type="submit">Envoyer</button>
+    <button class="button" type="submit">Envoyer</button>
     {{ form_end(registerForm) }}
 {% endblock %}
