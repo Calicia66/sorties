@@ -3,6 +3,12 @@
 {% block main %}
     <h2> Ajouter un évènement </h2>
 
+    {{ form_start(eventForm) }}
+    {{ form_widget(eventForm) }}
+
+    <button type="submit">Envoyer</button>
+    {{ form_end(eventForm) }}
+
     {# todo: afficher le formulaire qui permet d'entrer des données #}
 {% endblock %}
 

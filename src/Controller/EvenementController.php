@@ -3,6 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Evenement;
+use App\Form\EventType;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -39,9 +43,22 @@ class EvenementController extends AbstractController
      */
     //méthode create qui permet d'afficher sur une page le formulaire
     //qui enregistre les données en BDD
-    public function create()
+    public function add(EntityManagerInterface $em, \Symfony\Component\HttpFoundation\Request $request)
     {
-        //@todo: traiter le formulaire
-        return $this->render('evenement/add.html.twig');
+        $event = new Evenement();
+        $eventForm = $this->createForm(EventType::class, $event);
+        $event->setDuree(2);
+
+        $eventForm->handleRequest($request);
+        if ($eventForm->isSubmitted()) {
+            $em->persist($event);
+            $em->flush($event);
+        }
+
+
+        return $this->render('evenement/add.html.twig', [
+            "eventForm" => $eventForm->createView()
+        ]);
     }
+
 }

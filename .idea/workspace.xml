@@ -26,9 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f817835a-ff46-432f-b909-3af656a16903" name="Default Changelist" comment="Branche Evenement base sans formulaire">
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_22_09_2020_15_08.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/EventType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvenementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvenementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Evenement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evenement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evenement/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evenement/add.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +167,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/evenement" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../series" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -192,6 +194,8 @@
       <workItem from="1600758644433" duration="4151000" />
       <workItem from="1600769666521" duration="1872000" />
       <workItem from="1600780070091" duration="8912000" />
+      <workItem from="1600851411255" duration="6659000" />
+      <workItem from="1600864737093" duration="1419000" />
     </task>
     <task id="LOCAL-00001" summary="Premiere version">
       <created>1600780474036</created>
@@ -260,11 +264,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="562" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1600785821932" />
-    <state x="495" y="132" key="FileChooserDialogImpl" timestamp="1600770462175">
+    <state x="495" y="132" key="FileChooserDialogImpl" timestamp="1600864988119">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="440" y="117" key="FileChooserDialogImpl/0.0.1366.728/-1920.-313.1280.680@0.0.1366.728" timestamp="1600768506966" />
-    <state x="495" y="132" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1600770462175" />
+    <state x="495" y="132" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1600864988119" />
     <state x="538" y="259" key="Github.ShareDialog" timestamp="1600759497365">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
