@@ -28,7 +28,7 @@ class Evenement
     private $datedebut;
 
     /**
-     * @ORM\Column(type="decimal", precision=2, scale=2, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $duree;
 

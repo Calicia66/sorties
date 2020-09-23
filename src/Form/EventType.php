@@ -24,59 +24,45 @@ class EventType extends AbstractType
         $builder
 
             //Creation du champ nom
-            ->add('nom', TextType::class,[
-                'label'=> 'Evenement\'s nom'
-            ])
+
+
+        ->add('nom', Texttype::class, [    'attr' => ['class' => 'form-control'],
+                'label'=> 'Titre de l evenement'])
+
 
             //Creation du champ date de debut
-            ->add('datedebut', DateType::class,array (
-                'placeholder'=> array(
-                    'day'=>'jour',
-                    'month'=>'mois',
-                    'year'=>'année',
-                )
-            ),
-                [ 'label'=> "Date du Debut d'Inscription"
+          ->add('datedebut', DateType::class, [  'attr' => ['class' => 'form-control'],
+              'placeholder' => [
+                  'year' => 'Year',
+                  'month' => 'Month',
+                  'day' => 'Day',
+              ],
+
+                'label'=> "Date du Debut d'Inscription"
     ])
 
             //Creation du champ duree
-            ->add('duree',NumberType::class,[
+            ->add('duree',NumberType::class,[  'attr' => ['class' => 'form-control'],
         'label'=> "Durée "
     ])
             //Creation du champ date de cloture
-            ->add('datecloture',DateType::class,array (
-                'placeholder'=> array(
-                    'day'=>'jour',
-                    'month'=>'mois',
-                    'year'=>'année',
-                )
-            ),
-                [ 'label'=> "Date du Debut d'Inscription"
+
+            ->add('datecloture', DateType::class, [  'attr' => ['class' => 'form-control'],
+                'placeholder' => [
+                    'year' => 'Year',
+                    'month' => 'Month',
+                    'day' => 'Day',
+                ],
+
+                'label'=> "Date de fin"
             ])
 
-            //Creation du champ etat de sortie
-            ->add('etatsortie',ChoiceType::class, array(
-                'choices'=> array(
-                    'Inscription'=>'Voulez-vous vous inscrire?',
-                    'En cours'=>'En cours de validation',
-                    'Inscrit'=>'inscription Valider'
 
-            ),
-            ),
-                [
-                'label'=>"Etat de sortie"
-            ])
 
             //Creation du champ urlphoto
-            ->add('urlphoto',TextareaType::class, [
-                'label'=>"Photo"
-            ])
-
-            //Creation du champ organisateur
-            ->add('organisateur',TextType::class, [
-                'label'=>"Organisateur"
-
-            ])
+          //->add('urlphoto',TexteType::class, [
+            //    'label'=>"Photo"
+            //])
 
 
         ;

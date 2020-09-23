@@ -37,7 +37,7 @@ class EvenementController extends AbstractController
     {
         //@todo : récupérer la série en BDDdie($id);
 
-        return $this->render('evenement/add.html.twig', []);
+        return $this->render('evenement/detail.html.twig', []);
     }
 
     /**
@@ -56,8 +56,17 @@ class EvenementController extends AbstractController
         //Alimenter avec les données fournis dans le formulaire
         $eventform->handleRequest($request);
 
+        //Champs cachés
+       //  $event->getOrganisateur();
+         // $event->setEtatsortie();
+
+
+
+
+        /////////////////////////////////////////////////
+
         //si formulaire valider alors  données sauvegarder
-        if ($eventform->isSubmitted()){
+        if ($eventform->isSubmitted()&& $eventform->isValid()){
             $em->persist($event);
             $em->flush();
 

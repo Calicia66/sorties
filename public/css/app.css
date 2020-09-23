@@ -1,4 +1,8 @@
+body {
+    background-color: darkgray;
+    font-family: Arial;
 
+}
 .flash {
     padding: 20px;
     display: block;
