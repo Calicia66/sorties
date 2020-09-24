@@ -17,3 +17,8 @@ body {
 .flash-error{
     background-color: red;
 }
+
+.bouton_groupe {
+    display: block;
+    margin : auto;
+}

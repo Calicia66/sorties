@@ -1,0 +1,153 @@
+{% extends 'layout.html.twig' %}{% block main %}
+
+    <h1 class="text-center">Modifier une sortie</h1>
+    <div class="container">
+        <div class="row">
+            {# colone gauche #}
+            <div class="col-sm">
+
+                <div class="modifier">
+
+                    <div class="nom">
+                        <label for="start">Nom de la sortie</label>
+
+                        <input type="text">{%  for event in events %}
+                        {{event.nom  }}
+                           {% endfor %}
+
+                    </div>
+
+                    <div class="date_debut>">
+                        <label for="start">Date et heure de la sortie</label>
+                        <input type="date" id="start" name="trip-start"
+                               value="2018-07-22"
+                               min="2018-01-01" max="2018-12-31">
+                       {#{{event.datedebut|date("Y-m-d")  }} #}
+                    </div>
+                    <div class="date_cloture">
+
+                        <label for="start">Date limite d'inscription</label>
+                        <input type="date" id="start" name="trip-start"
+                               value="2018-07-22"
+                               min="2018-01-01" max="2018-12-31">
+                        {# {{event.datecloture|date("Y-m-d")  }} #}
+                    </div>
+
+                    <div class="nbr_place">
+                        <label for="start">Nombre de places</label>
+                        <input type="text">
+                        {%  for event in events %}
+                            {{event.places  }}
+                        {% endfor %}
+                    </div>
+
+                    <div class="duree">
+                        <label for="start">Durée</label>
+                        <select>
+
+                           {#for($i = 1;$i <= 10000;$i++)
+
+                             echo '<option value="'.$i.'">'.$i.'</option>'; #}
+
+
+                        </select>
+                        <label for="start">minutes</label>
+                    </div>
+
+                    <div class="descrip_info">
+                        <label for="start">Description et infos</label>
+                        <textarea >{%  for event in events %}
+                                {{event.descriptioninfos }}
+                            {% endfor %}"</textarea>
+                    </div>
+
+                </div>
+            </div>
+
+            {# colone droite #}
+            <div class="col-sm">
+
+                <div class="modifier2">
+
+                    <div class="campus">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Campus
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">{%  for event in events %}
+                                {{event.descriptioninfos }}
+                            {% endfor %}</a>
+
+                        </div>
+                    </div>
+
+
+                    <div class="lieu">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Lieu
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">{%  for event in events %}
+                                    {{event.descriptioninfos }}
+                                {% endfor %}</a>
+
+
+                        </div>
+                        <button class="btn btn-primary" type="button">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                        </svg>
+                        </button>
+                    </div>
+
+                    <div class="rue">
+                        <label for="start">Rue</label>
+                        {%  for event in events %}
+                            {{event.descriptioninfos }}
+                        {% endfor %}
+                    </div>
+
+                    <div class="code_postal">
+                        <label for="start">Code Postal</label>
+                        {%  for event in events %}
+                            {{event.descriptioninfos }}
+                        {% endfor %}
+                    </div>
+
+                    <div class="Latitude">
+                        <label for="start">Latitude</label>
+                        <input type="text">
+                        {%  for event in events %}
+                            {{event.descriptioninfos }}
+                        {% endfor %}
+                    </div>
+
+                    <div class="Longitude">
+                        <label for="start">Longitude</label>
+                        <input type="text">
+                        {%  for event in events %}
+                            {{event.descriptioninfos }}
+                        {% endfor %}
+                    </div>
+
+
+            </div>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+    <div class="bouton_groupe">
+        <button type="button" class="btn btn-outline-success">Enregistrer</button>
+        <button type="button" class="btn btn-outline-primary">Plublier la sortie</button>
+        <button type="button" class="btn btn-outline-warning">Suprimer la sortie</button>
+        <button type="button" class="btn btn-outline-danger">Annuler</button>
+    </div>
+
+{% endblock %}{% block title %} Les sorties ! {% endblock %}
+
+
