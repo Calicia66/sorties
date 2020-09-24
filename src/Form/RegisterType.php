@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Campus;
 use App\Entity\User;
+use Doctrine\DBAL\Types\IntegerType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -12,10 +14,11 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Choice;
 
-class RegisterType extends AbstractType
+class RegisterType extends AbstractType implements FormTypeInterface
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -45,10 +48,9 @@ class RegisterType extends AbstractType
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmer le mot de passe']])
             ->add('email',EmailType::class)
-            ->add('campus', ChoiceType::class,  ['choices' =>  [
-        'Rennes' =>  1,
-        'Nantes' => 2,
-        'Niort' => 3, ],])
+           ->add('Campus', EntityType::class, [
+               'class' => Campus::class,
+               'choice_label' => 'libelle',])
 
 
         ;

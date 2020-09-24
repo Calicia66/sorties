@@ -55,6 +55,7 @@ class UserController extends AbstractController
     {
 
         $editorForm =$this->createForm(RegisterType::class, $User);
+       // $editorForm->get("campus");
         //on envoie le formulaire dans le request
         $editorForm ->handleRequest($request);
         //on verifie le formulaire avant de le soumettre

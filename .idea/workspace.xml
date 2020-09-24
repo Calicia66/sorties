@@ -16,22 +16,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f817835a-ff46-432f-b909-3af656a16903" name="Default Changelist" comment="before push to git">
-      <change afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Campus.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/CampusRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Security/AppAuthenticator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/editprofil.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/profil.html.twig" afterDir="false" />
+    <list default="true" id="f817835a-ff46-432f-b909-3af656a16903" name="Default Changelist" comment="Form profile and register not finished yes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/RegisterType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RegisterType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/layout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +190,8 @@
       <workItem from="1600758644433" duration="4151000" />
       <workItem from="1600769666521" duration="1872000" />
       <workItem from="1600780070091" duration="362000" />
-      <workItem from="1600845812994" duration="35323000" />
+      <workItem from="1600845812994" duration="36058000" />
+      <workItem from="1600933507990" duration="2512000" />
     </task>
     <task id="LOCAL-00001" summary="Generation des 3 fichiers controller user form">
       <created>1600789765466</created>
@@ -231,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600806099369</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Form profile and register not finished yes">
+      <created>1600897597626</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1600897597626</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,7 +264,8 @@
     <MESSAGE value="modification de user Entity et RegisterType" />
     <MESSAGE value="modification de user Entity et RegisterType et securyity yaml user stored in database" />
     <MESSAGE value="before push to git" />
-    <option name="LAST_COMMIT_MESSAGE" value="before push to git" />
+    <MESSAGE value="Form profile and register not finished yes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Form profile and register not finished yes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="470" y="241" key="#Composer" timestamp="1600759049574">
