@@ -49,6 +49,10 @@ class UserController extends AbstractController
         return $this->render('user/register.html.twig',["registerForm"=>$registerForm->createView()]);
     }
     /**
+     * Formulaire de modification des données de l'utilisateur
+     * basé sur la fonction Register mais prenant comme entité un utilisateur existant
+     * l'id est directement transformer en objet User avec un accès sur toutes les méthodes
+     * et atttributs
      * @Route("/editor/{id}", name="editor")
      */
         public function editor(EntityManagerInterface $em, Request $request, User $User, UserPasswordEncoderInterface $encoder)
@@ -88,7 +92,7 @@ class UserController extends AbstractController
         {
             $userRepo = $this->getDoctrine()->getRepository(User::class);
             $participants =$userRepo->findAll();
-            return $this->render("user/profil.html.twig", ["participants"=>$participants]);
+            return $this->render("user/users_list.html.twig", ["Users"=>$participants]);
         }
 
     }

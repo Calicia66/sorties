@@ -25,7 +25,7 @@ class RegisterType extends AbstractType implements FormTypeInterface
         /* Certains champs sont en anglais
         * car FormBuilderInterface impose que ces champs portent des noms spécifiques
         */
-       $campus = new Campus();
+        $campus = new Campus();
         $builder
             //Création du champs pseudo
             ->add("username", TextType::class, ['label'=>'Login',
@@ -48,9 +48,10 @@ class RegisterType extends AbstractType implements FormTypeInterface
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmer le mot de passe']])
             ->add('email',EmailType::class)
-           ->add('Campus', EntityType::class, [
-               'class' => Campus::class,
-               'choice_label' => 'libelle',])
+            //Affichage du contenu de l'entité campus sur le choix du labelle inscrit dans la bdd
+            ->add('Campus', EntityType::class, [
+                'class' => Campus::class,
+                'choice_label' => 'libelle',])
 
 
         ;
