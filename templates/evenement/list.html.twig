@@ -1,114 +1,109 @@
-{% extends 'layout.html.twig' %}
 
-{% block main %}
+{% extends 'layout.html.twig' %}{% block main %}
 
-<h1 class="text-center">Filtrer les sorties</h1>
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
+    <h1 class="text-center">Filtrer les sorties</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
 
-    <div class="Campus_choix">
+                <div class="Campus_choix">
 
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Campus
-            </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">St Herblain</a>
-            <a class="dropdown-item" href="#">Herblay</a>
-            <a class="dropdown-item" href="#">Cherbourg</a>
-        </div>
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Campus
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">St Herblain</a>
+                        <a class="dropdown-item" href="#">Herblay</a>
+                        <a class="dropdown-item" href="#">Cherbourg</a>
+                    </div>
 
-    </div>
+                </div>
 
-    <div class="recherche nom">
-    <form class="form-inline my-2 my-lg-0">
-        <label>Le nom de la sortie contient:</label>
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    </form>
-    </div>
+                <div class="recherche nom">
+                    <form class="form-inline my-2 my-lg-0">
+                        <label>Le nom de la sortie contient:</label>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
 
-    <div class="date_debut_cloture>">
-    <label for="start">Entre</label>
-    <input type="date" id="start" name="trip-start"
-           value="2018-07-22"
-           min="2018-01-01" max="2018-12-31">
+                <div class="date_debut_cloture>">
+                    <label for="start">Entre</label>
+                    <input type="date" id="start" name="trip-start"
+                           value="2018-07-22"
+                           min="2018-01-01" max="2018-12-31">
 
-    <label for="start">Et</label>
-    <input type="date" id="start" name="trip-start"
-           value="2018-07-22"
-           min="2018-01-01" max="2018-12-31">
-    </div>
-        </div>
+                    <label for="start">Et</label>
+                    <input type="date" id="start" name="trip-start"
+                           value="2018-07-22"
+                           min="2018-01-01" max="2018-12-31">
+                </div>
+            </div>
 
-    <div class="checkbox">
-        <div>
-        <input type="checkbox"  name="sortie dont organisateur"
-               checked>
-        <label for="sortie dont organisateur">sortie dont je suis l'organisateur/trice</label>
-         </div>
-        <div>
-        <input type="checkbox"  name="sortie dont inscrit"
-               checked>
-        <label for="sortie dont inscrit">sortie auxquelles je suis inscrit/e</label>
-         </div>
-        <div>
-        <input type="checkbox"  name="sortie non inscrit"
-               checked>
-        <label for="sortie non inscrit">sortie auxquelles je  ne suis pas inscrit/e</label>
-        </div>
-         <div>
-        <input type="checkbox"  name="sortie passées"
-               checked>
-        <label for="sortie passées">sortie passées</label>
-        </div>
-    </div>
-    <div class="bouton_recherche">
-        <button type="button" class="btn btn-primary">Recherche</button>
-    </div>
-
-
-        <div class="events">
-
-               <table class="table">
-                   <thead>
-                   <tr>
-
-                       <th>Nom de la sortie</th>
-                       <th>Date de la sortie</th>
-                       <th>Cloture</th>
-                       <th>inscrits/places</th>
-                       <th>Etat</th>
-                       <th>Inscrit</th>
-                       <th>Organisateur</th>
-                       <th>Actions</th>
-                   </tr>
-                   </thead>
-                   <tbody>
-    {%  for event in events %}
-                   <tr>
-                       <td> {{ event.nom }}</td>
-                       <td> {{event.datedebut|date("Y-m-d")  }}</td>
-                       <td> {{event.datecloture|date("Y-m-d")  }}</td>
-                       {#  <td> {{ event.place }}</td>#}
-                       <td> {{ event.etatsortie }}</td>
-                        {#  <td> {{ event.inscrit }}</td> #}
-                       <td> {{ event.organisateur }}</td>
-                       {# <td> {{ event.actions}}</td>  #}
-                   </tr>
-    {%  endfor %}
-                   </tbody>
+            <div class="checkbox">
+                <div>
+                    <input type="checkbox"  name="sortie dont organisateur"
+                           checked>
+                    <label for="sortie dont organisateur">sortie dont je suis l'organisateur/trice</label>
+                </div>
+                <div>
+                    <input type="checkbox"  name="sortie dont inscrit"
+                           checked>
+                    <label for="sortie dont inscrit">sortie auxquelles je suis inscrit/e</label>
+                </div>
+                <div>
+                    <input type="checkbox"  name="sortie non inscrit"
+                           checked>
+                    <label for="sortie non inscrit">sortie auxquelles je  ne suis pas inscrit/e</label>
+                </div>
+                <div>
+                    <input type="checkbox"  name="sortie passées"
+                           checked>
+                    <label for="sortie passées">sortie passées</label>
+                </div>
+            </div>
+            <div class="bouton_recherche">
+                <button type="button" class="btn btn-primary">Recherche</button>
+            </div>
 
 
-               </table>
+            <div class="events">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+
+                        <th>Nom de la sortie</th>
+                        <th>Date de la sortie</th>
+                        <th>Cloture</th>
+                        <th>inscrits/places</th>
+                        <th>Etat</th>
+                        <th>Inscrit</th>
+                        <th>Organisateur</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%  for event in events %}
+                        <tr>
+                            <td> {{ event.nom }}</td>
+                            <td> {{event.datedebut|date("Y-m-d")  }}</td>
+                            <td> {{event.datecloture|date("Y-m-d")  }}</td>
+                            {#  <td> {{ event.place }}</td>#}                       <td> {{ event.etatsortie }}</td>
+                            {#  <td> {{ event.inscrit }}</td> #}                       <td> {{ event.organisateur }}</td>
+                            {# <td> {{ event.actions}}</td>  #}                   </tr>
+                    {%  endfor %}
+                    </tbody>
+
+
+                </table>
+            </div>
         </div>
     </div>
-        </div>
 
 
     <div class="Créer une sortie">
         <button type="button" class="btn btn-primary">Créer une sortie</button>
     </div>
-{% endblock %}
+{% endblock %}{% block title %} Les sorties ! {% endblock %}
 
-{% block title %} Les sorties ! {% endblock %}
 
