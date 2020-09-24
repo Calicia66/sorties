@@ -39,7 +39,7 @@ class Evenement
 
 
     /**
-     * @ORM\Column (type="text")
+     * @ORM\Column (type="text",nullable=false)
      */
     private $descriptioninfos;
 
@@ -58,6 +58,10 @@ class Evenement
      */
     private $organisateur;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $places;
     /**
      * @return mixed
      */
@@ -200,7 +204,19 @@ class Evenement
     public function setOrganisateur($organisateur): void
     {
         $this->organisateur = $organisateur;
-    }
+    }/**
+ * @return mixed
+ */
+public function getPlaces()
+{
+    return $this->places;
+}/**
+ * @param mixed $places
+ */
+public function setPlaces($places): void
+{
+    $this->places = $places;
+}
 
 
 
