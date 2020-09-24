@@ -29,6 +29,11 @@ class Ville
      */
     private $code_postal;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Evenement", mappedBy="ville")
+     */
+    private $evenement;
+
 
     //Générer les getters et setters
     /**
@@ -54,5 +59,23 @@ class Ville
     {
         $this->code_postal = $code_postal;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEvenement()
+    {
+        return $this->evenement;
+    }
+
+    /**
+     * @param mixed $evenement
+     */
+    public function setEvenement($evenement): void
+    {
+        $this->evenement = $evenement;
+    }
+
+
 
 }

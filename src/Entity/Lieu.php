@@ -38,9 +38,12 @@ class Lieu
      */
     private $longitude;
 
+    //Générer la relation OneToMany avec la table Evenement
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Evenement", mappedBy="lieu")
+     */
+    private $evenement;
 
-
-    //Ajouter le champ evenement avec une relation ManyToOne
 
 
 
@@ -124,4 +127,22 @@ class Lieu
     {
         $this->longitude = $longitude;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEvenement()
+    {
+        return $this->evenement;
+    }
+
+    /**
+     * @param mixed $evenement
+     */
+    public function setEvenement($evenement): void
+    {
+        $this->evenement = $evenement;
+    }
+
+
 }

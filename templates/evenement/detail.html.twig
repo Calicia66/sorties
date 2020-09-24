@@ -1,10 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 {% block main %}
-    <h2> Détail de la sortie</h2>
+    <h2> Afficher une sortie</h2>
 
         <div class="event"> {{ event.nom }} </div>
-        <div> {{ event.descriptioninfos }}</div>
+        <div class="duree"> {{ event.duree }} </div>
+        <div class="descriptioninfos"> {{ event.descriptioninfos }}</div>
+        <div class="datedebut"> {{ event.datedebut|date("Y-m-d H:i:s") }} </div>
+        <div class="datecloture"> {{ event.datecloture|date("Y-m-d H:i:s") }} </div>
+        <div class="etatsortie"> {{ event.etatsortie }}</div>
+
+
+
+
+
 
 
 
