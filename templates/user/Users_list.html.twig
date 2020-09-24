@@ -1,0 +1,38 @@
+{% extends ("main/layout.html.twig") %}
+{%  block title %}
+    Sortir.com | Profil
+{% endblock %}
+{%  block main %}
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Pseudonyme</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Campus</th>
+                </tr>
+                </thead>
+                <tbody>
+    {% for profil in Users %}
+                <tr>
+                    <th scope="row">{{ profil.id }}</th>
+                    <td>{{ profil.username }}</td>
+                    <td>{{ profil.nom }}</td>
+                    <td>{{ profil.prenom }}</td>
+                    <td>{{ profil.campus.libelle }}</td>
+
+                   </td >
+                </tr>
+
+    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+{% endblock %}
