@@ -1,0 +1,15 @@
+{% extends ("main/layout.html.twig") %}
+{% block title %}
+    Inscription
+{% endblock %}
+{% block main %}
+    {{  form_start(registerForm) }}
+
+
+    {{ form_widget(registerForm) }}
+    {{ form_errors(registerForm) }}
+
+    <br>
+    <button class="button" type="submit">Envoyer</button>
+    {{ form_end(registerForm) }}
+{% endblock %}

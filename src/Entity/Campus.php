@@ -10,75 +10,40 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Campus
 {
-
-
-   //Ajouter le champ name avec une annotation de type string
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
-
     /**
-     * @ORM\Column (type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      */
-    private $nom_campus;
-
-    //Ajouter le champ evenement avec une relation OneToMany
-
-
-
-
-
-    //Générer les getters et setters
+    private $libelle;
     /**
-     * @return mixed
-     */
-    public function getId()
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="campus")
+     * */
+    private $User;
+
+    public function getId(): ?int
     {
         return $this->id;
     }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
-
     /**
      * @return mixed
      */
-    public function getNom()
+    public function getLibelle()
     {
-        return $this->nom;
+        return $this->libelle;
     }
 
     /**
-     * @param mixed $nom
+     * @param mixed $libelle
+     * @return Campus
      */
-    public function setNom($nom): void
+    public function setLibelle($libelle)
     {
-        $this->nom = $nom;
+        $this->libelle = $libelle;
+        return $this;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getEvenement()
-    {
-        return $this->evenement;
-    }
-
-    /**
-     * @param mixed $evenement
-     */
-    public function setEvenement($evenement): void
-    {
-        $this->evenement = $evenement;
-    }
-
-
 }
