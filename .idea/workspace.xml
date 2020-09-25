@@ -26,10 +26,17 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e33d502-f6f3-43b4-9791-c0ee7e86991f" name="Default Changelist" comment="Création formulaire ajout d'un lieu">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/LieuType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/evenement/add_lieu.html.twig" afterDir="false" />
+    <list default="true" id="4e33d502-f6f3-43b4-9791-c0ee7e86991f" name="Default Changelist" comment="Création formulaire ajout d'un lieu(2)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EventType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EventType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/layout.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/Users_list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/Users_list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/editprofil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/editprofil.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/profil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/profil.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +176,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601019319538</updated>
-      <workItem from="1601019320631" duration="10342000" />
+      <workItem from="1601019320631" duration="17636000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1601019485338</created>
@@ -192,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601028734994</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Création formulaire ajout d'un lieu(2)">
+      <created>1601038189574</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1601038189574</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +240,8 @@
     <MESSAGE value="Test" />
     <MESSAGE value="Changement titre add.html.twig" />
     <MESSAGE value="Création formulaire ajout d'un lieu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Création formulaire ajout d'un lieu" />
+    <MESSAGE value="Création formulaire ajout d'un lieu(2)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Création formulaire ajout d'un lieu(2)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="562" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1601026440442">
@@ -237,9 +252,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601025980754" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601028750453">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601038564124">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601028750453" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601038564124" />
   </component>
 </project>
