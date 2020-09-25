@@ -76,7 +76,7 @@ class UserController extends AbstractController
             //on finalise l'insertion des données sur la base de donnée Mysql
             $em->flush();
             //on fait une redirection vers une page à la suite
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('evenement_list');
             //Dans le cas où le formulaire n\'est pas bien renseignée on revient sur la page
         }
         //on crée la vue du formulaire avant d'envoyer
