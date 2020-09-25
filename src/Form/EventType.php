@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Lieu;
+use App\Entity\Ville;
 use http\Env\Url;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\DomCrawler\Field\TextareaFormField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -24,15 +27,11 @@ class EventType extends AbstractType
         $builder
 
             //Creation du champ nom
-
-
         ->add('nom', Texttype::class, [    'attr' => ['class' => 'form-control'],
                 'label'=> 'Titre de l evenement'])
-
+            //Création du champ description
             ->add('descriptioninfos', TextareaType::class, [    'attr' => ['class' => 'form-control'],
                 'label'=> 'Descriptif de l evenement'])
-
-
             //Creation du champ date de debut
           ->add('datedebut', DateType::class, [  'attr' => ['class' => 'form-control'],
               'placeholder' => [
@@ -43,13 +42,11 @@ class EventType extends AbstractType
 
                 'label'=> "Date du Debut d'Inscription"
     ])
-
             //Creation du champ duree
             ->add('duree',NumberType::class,[  'attr' => ['class' => 'form-control'],
         'label'=> "Durée"
     ])
             //Creation du champ date de cloture
-
             ->add('datecloture', DateType::class, [  'attr' => ['class' => 'form-control'],
                 'placeholder' => [
                     'year' => 'Year',
@@ -62,12 +59,14 @@ class EventType extends AbstractType
             ->add('descriptioninfos', TextareaType::class, [    'attr' => ['class' => 'form-control'],
                 'label'=> 'Description de l evenement'])
 
+           //Création du champ ville
+            ->add('ville', EntityType::class, [ 'class' => Ville::class,
+               'label' => 'nom_ville'
+           ])
 
 
-            //Creation du champ urlphoto
-          //->add('urlphoto',TexteType::class, [
-            //    'label'=>"Photo"
-            //])
+
+
 
 
         ;

@@ -65,23 +65,6 @@ class Evenement
      */
     private $places;
 
-    //Générer les relations avec les tables Ville et Lieu
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="evenement")
-     */
-    private $ville;
-
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="evenement")
-     */
-    private $lieu;
-
-
-
-
-
 
     /**
      * @return mixed
