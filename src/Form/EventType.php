@@ -59,6 +59,8 @@ class EventType extends AbstractType
 
                 'label'=> "Date de fin"
             ])
+            ->add('descriptioninfos', TextareaType::class, [    'attr' => ['class' => 'form-control'],
+                'label'=> 'Description de l evenement'])
 
 
 

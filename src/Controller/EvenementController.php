@@ -84,4 +84,37 @@ class EvenementController extends AbstractController
             "eventform"=> $eventform->createView()
         ]);
     }
+    /**
+     * @Route("/evenement/switch", name="evenement_switch")
+     */
+    //méthode switch qui permet d'afficher sur une page de modifier les données
+    public function switch(EntityManagerInterface $em)
+    {
+        //récupérer les sorties en base de donnée
+        $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
+        //findAll permet de récupérer toute les sorties enregistrées.
+        $event = $eventRepo->findAll();
+
+
+        return $this->render('evenement/switch.html.twig', [
+            "events"=>$event
+        ]);
+    }
+
+    /**
+     * @Route("/evenement/cancel", name="evenement_cancel")
+     */
+    //méthode cancel qui permet d annuler une sortie
+    public function cancel(EntityManagerInterface $em)
+    {
+        //récupérer les sorties en base de donnée
+        $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
+        //findAll permet de récupérer toute les sorties enregistrées.
+        $event = $eventRepo->findAll();
+
+
+        return $this->render('evenement/cancel.html.twig', [
+            "events"=>$event
+        ]);
+    }
 }
