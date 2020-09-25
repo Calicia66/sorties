@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <h2 class="text-center" > Ajout d'un lieu </h2>
+    <div class="form-group">
+
+
+
+        {# Afficher le formulaire qui permet d'entrer des données  et mettre un bouton Validation #}
+        {{ form_start(eventform) }}
+
+        <div class="form-group"> Nom de lieu
+            {{ form_label(eventform.nom_lieu) }}
+            {{ form_widget(eventform.nom_lieu) }}
+            {{ form_end(eventform.nom_lieu) }}
+        </div>
+        <div class="form-group"> Rue
+            {{ form_label(eventform.rue) }}
+            {{ form_widget(eventform.rue) }}
+            {{ form_end(eventform.rue) }}
+        </div>
+        <div class="form-group"> Longitude
+            {{ form_label(eventform.longitude) }}
+            {{ form_widget(eventform.longitude) }}
+            {{ form_end(eventform.longitude) }}
+        </div>
+        <div class="form-group"> Latitude
+            {{ form_label(eventform.latitude) }}
+            {{ form_widget(eventform.latitude) }}
+            {{ form_end(eventform.latitude) }}
+        </div>
+        <div class="form-group"> Nom de la ville
+            {{ form_label(eventform.ville) }}
+            {{ form_widget(eventform.ville) }}
+            {{ form_end(eventform.ville) }}
+        </div>
+
+
+        <button TYPE="submit" class="btn btn-primary">Valider</button>
+        <button type="reset" class="btn btn-primary">Annuler</button>
+        {{ form_end(eventform) }}
+
+    </div>
+{% endblock %}
+
+{% block title %} Ajoutez votre lieu |{{ parent() }}{% endblock %}
