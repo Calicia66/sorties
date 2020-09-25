@@ -38,11 +38,11 @@ class Lieu
      */
     private $longitude;
 
-    //Générer la relation OneToMany avec la table Evenement
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Evenement", mappedBy="lieu")
-     */
-    private $evenement;
+
+     /**
+      * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="lieu")
+      */
+    private $ville;
 
 
 
@@ -129,20 +129,23 @@ class Lieu
     }
 
     /**
-     * @return mixed
+    * @return mixed
      */
-    public function getEvenement()
+    public function getVille()
     {
-        return $this->evenement;
+    return $this->ville;
     }
 
+
     /**
-     * @param mixed $evenement
-     */
-    public function setEvenement($evenement): void
+    * @param mixed $ville
+    */
+    public function setVille($ville): void
     {
-        $this->evenement = $evenement;
+    $this->ville = $ville;
     }
+
+
 
 
 }
