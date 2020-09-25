@@ -62,6 +62,7 @@ private $password;
      *
      */
    private $campus;
+
 //pas sauvegardé dans la base
     private $roles;
 
