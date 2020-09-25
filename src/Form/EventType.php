@@ -59,12 +59,12 @@ class EventType extends AbstractType
             ->add('descriptioninfos', TextareaType::class, [    'attr' => ['class' => 'form-control'],
                 'label'=> 'Description de l evenement'])
 
-           //Création du champ ville
+           /*Création du champ ville
             ->add('ville', EntityType::class, [ 'class' => Ville::class,
                'label' => 'nom_ville'
            ])
 
-
+*/
 
 
 
