@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=EvenementRepository::class)
  */
@@ -24,11 +25,12 @@ class Evenement
 
     /**
      * @ORM\Column(type="date")
+     *
      */
     private $datedebut;
 
     /**
-     * @ORM\Column(type="decimal", precision=2, scale=2, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $duree;
 
@@ -57,6 +59,29 @@ class Evenement
      * @ORM\Column (type="string", nullable=true)
      */
     private $organisateur;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $places;
+
+    //Générer les relations avec les tables Ville et Lieu
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="evenement")
+     */
+    private $ville;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="evenement")
+     */
+    private $lieu;
+
+
+
+
+
 
     /**
      * @return mixed
@@ -201,6 +226,60 @@ class Evenement
     {
         $this->organisateur = $organisateur;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed $ville
+     */
+    public function setVille($ville): void
+    {
+        $this->ville = $ville;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+
+    /**
+     * @param mixed $lieu
+     */
+    public function setLieu($lieu): void
+    {
+        $this->lieu = $lieu;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlaces()
+    {
+        return $this->places;
+    }
+
+    /**
+     * @param mixed $places
+     */
+    public function setPlaces($places): void
+    {
+        $this->places = $places;
+    }
+
+
+
+
+
+
 
 
 

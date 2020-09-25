@@ -1,0 +1,57 @@
+{% extends 'layout.html.twig' %}{% block main %}
+
+    <h1 class="text-center">Annuler une sortie</h1>
+
+                <div class="annuler">
+
+                    <div class="nom">
+                        <label for="start">Nom de la sortie :   </label>
+
+                       {%  for event in events %}
+                            {{event.nom  }}
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="date_debut>">
+                        <label for="start">Date de la sortie :</label>
+
+                        {%  for event in events %}
+                        {{event.datedebut|date("Y-m-d")  }}
+                        {% endfor %}
+                    </div>
+
+
+                    <div class="campus">
+                        <label for="start">Campus :  </label>
+                        {%  for event in events %}
+                                    {{event.descriptioninfos }}
+                                {% endfor %}</a>
+
+                        </div>
+                    </div>
+
+
+                    <div class="lieu">
+                        <label for="start">Lieu :  </label>
+                        {%  for event in events %}
+                                    {{event.descriptioninfos }}
+                                {% endfor %}</a>
+                    </div>
+
+                    <div class="motif">
+                         <label for="start">Motif  : </label>
+                        <textarea></textarea>
+
+                    </div>
+
+                    <div class="bouton_groupe">
+                         <button type="button" class="btn btn-outline-success">Enregistrer</button>
+                         <button type="button" class="btn btn-outline-warning">Annuler</button>
+
+                     </div>
+
+
+{% endblock %}{% block title %} Les sorties ! {% endblock %}
+
+
