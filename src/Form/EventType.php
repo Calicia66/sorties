@@ -63,6 +63,7 @@ class EventType extends AbstractType
             ->add('ville', EntityType::class, [ 'class' => Ville::class,
                'label' => 'nom_ville'
            ])
+           */
 
 */
 
