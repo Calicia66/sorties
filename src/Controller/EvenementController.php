@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Campus;
 use App\Entity\Evenement;
 use App\Entity\Lieu;
 use App\Form\EventType;
@@ -11,11 +12,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
+/**
+ * @Route("/evenement", )
+ */
 class EvenementController extends AbstractController
 {
     /**
-     * @Route("/evenement/list", name="evenement_list")
+     * @Route("/list", name="evenement_list")
      */
     //méthode list qui permet d'afficher sur une page la liste des évènements enregistrés en BDD
     public function list(EntityManagerInterface $em)
@@ -24,15 +27,16 @@ class EvenementController extends AbstractController
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
         //findAll permet de récupérer toute les sorties enregistrées.
         $event = $eventRepo->findAll();
-
+        $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
+        $campus =$campusRepo->findAll();
 
         return $this->render('evenement/list.html.twig', [
-            "events"=>$event
+            "events"=>$event, "campus"=>$campus
         ]);
     }
 
     /**
-     * @Route("/evenement/{id}", name="evenement_detail", requirements={"id": "\d+"})
+     * @Route("/detail/{id}", name="evenement_detail", requirements={"id": "\d+"})
      */
     //méthode detail qui permet d'afficher sur une page un évènement particulier enregistré en BDD
     public function detail($id)
@@ -46,7 +50,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @Route("/evenement/add", name="evenement_add")
+     * @Route("/add", name="evenement_add")
      */
     //méthode create qui permet d'afficher sur une page le formulaire
     //qui enregistre les données en BDD
@@ -76,7 +80,7 @@ class EvenementController extends AbstractController
 
 
             //Redirige l utilisateur sur la page detail
-            return  $this->redirectToRoute('evenement_list',[
+            return  $this->redirectToRoute('evenement_detail',[
                 'id'=>$event->getId()
             ]);
         }

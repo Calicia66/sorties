@@ -1,0 +1,27 @@
+
+{% extends 'layout.html.twig' %}{% block main %}
+
+    <h1 class="text-center">Liste des campus</h1>
+    <div class="container">
+        <div class="row">
+             <div class="campus list">
+
+<ul>
+                    {%  for camp in campus %}
+
+                        <li> <a href="{{ path('main', {id: camp.id}) }}"> {{ camp.libelle }}</a></li>
+
+
+                    {%  endfor %}
+</ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="btn btn_back">
+        <button type="button" onclick="goBack()" class="btn btn-primary">Retour</button>
+    </div>
+{% endblock %}{% block title %} Les sorties ! {% endblock %}
+
+

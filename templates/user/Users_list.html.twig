@@ -18,11 +18,11 @@
                 <tbody>
     {% for profil in Users %}
                 <tr>
-                    <th scope="row">{{ profil.id }}</th>
-                    <td>{{ profil.username }}</td>
+                    <th scope="row"> {{ profil.id }}</th>
+                    <td><a href="{{ path('user_profil', {id: profil.id}) }}">{{ profil.username }}</a></td>
                     <td>{{ profil.nom }}</td>
                     <td>{{ profil.prenom }}</td>
-                    <td>{{ profil.campus.libelle }}</td>
+                    <td><a href="{{ path('campus', {id: profil.campus.id}) }}">{{ profil.campus.libelle }}</td>
 
                    </td >
                 </tr>
@@ -32,7 +32,9 @@
             </table>
         </div>
 
-
+    <div class="btn btn_back">
+        <button type="button" onclick="goBack()" class="btn btn-primary">Retour</button>
+    </div>
 
 
 {% endblock %}
