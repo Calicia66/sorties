@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Evenement;
+use App\Entity\Lieu;
 use App\Form\EventType;
+use App\Form\LieuType;
 use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -117,4 +119,51 @@ class EvenementController extends AbstractController
             "events"=>$event
         ]);
     }
+
+    //Création du formulaire Lieu
+
+    /**
+     * @Route("/evenement/add_lieu", name="add_lieu")
+     */
+    //méthode create qui permet d'afficher sur une page le formulaire
+    //qui enregistre les données en BDD
+    public function add_lieu(EntityManagerInterface $em, Request $request)
+    {
+        // Creer une instance de mon entity
+        $event = new Lieu();
+
+        //Creer mon formulaire
+        $eventform = $this->createForm(LieuType::class, $event);
+
+        //Alimenter avec les données fournis dans le formulaire
+        $eventform->handleRequest($request);
+
+        //Champs cachés
+        //  $event->getOrganisateur();
+        // $event->setEtatsortie();
+
+
+        //si formulaire valider alors  données sauvegarder
+        if ($eventform->isSubmitted()&& $eventform->isValid()){
+            $em->persist($event);
+            $em->flush();
+
+            //Afficher un message flash
+            $this->addFlash('success','Votre lieu a bien été enregistré');
+
+
+            //Redirige l utilisateur sur la page detail
+            return  $this->redirectToRoute('evenement_list',[
+                'id'=>$event->getId()
+            ]);
+        }
+
+
+        return $this->render('evenement/add_lieu.html.twig', [
+            "eventform"=> $eventform->createView()
+        ]);
+    }
+
+
+
 }

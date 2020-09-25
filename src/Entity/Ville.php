@@ -29,10 +29,14 @@ class Ville
      */
     private $code_postal;
 
+
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Evenement", mappedBy="ville")
+     * @ORM\OneToMany (targetEntity="App\Entity\Lieu", mappedBy="ville")
      */
-    private $evenement;
+    private $lieu;
+
+
+
 
 
     //Générer les getters et setters
@@ -60,6 +64,7 @@ class Ville
         $this->code_postal = $code_postal;
     }
 
+
     /**
      * @return mixed
      */
@@ -75,6 +80,24 @@ class Ville
     {
         $this->evenement = $evenement;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+
+    /**
+     * @param mixed $lieu
+     */
+    public function setLieu($lieu): void
+    {
+        $this->lieu = $lieu;
+    }
+
+
 
 
 
