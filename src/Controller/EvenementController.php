@@ -27,6 +27,8 @@ class EvenementController extends AbstractController
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
         //findAll permet de récupérer toute les sorties enregistrées.
         $event = $eventRepo->findAll();
+
+        //permet  d aller recuperer les campus
         $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
         $campus =$campusRepo->findAll();
 
@@ -61,7 +63,6 @@ class EvenementController extends AbstractController
 
         //Creer mon formulaire
         $eventform = $this->createForm(EventType::class, $event);
-
         //Alimenter avec les données fournis dans le formulaire
         $eventform->handleRequest($request);
 
