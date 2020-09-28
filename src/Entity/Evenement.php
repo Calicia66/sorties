@@ -75,6 +75,8 @@ class Evenement
      */
     private $users;
 
+
+    //cascade={persist}
     /**
      * @ORM\ManyToMany(targetEntity=Lieu::class, inversedBy="evenements")
      */

@@ -57,6 +57,31 @@ class Ville
     }
 
     /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomVille()
+    {
+        return $this->nom_ville;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodePostal()
+    {
+        return $this->code_postal;
+    }
+
+
+    /**
      * @param mixed $code_postal
      */
     public function setCodePostal($code_postal): void
