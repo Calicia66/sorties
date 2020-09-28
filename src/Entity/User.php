@@ -14,6 +14,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    public function __construct()
+    {
+        $this->evenements = new ArrayCollection();
+
+    }
 
     /**
      * @ORM\Id
@@ -67,18 +72,16 @@ private $password;
    private $campus;
 
 
+
 //pas sauvegardé dans la base
     private $roles;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Evenement::class, mappedBy="users")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Evenement", inversedBy="users")
      */
     private $evenements;
 
-    public function __construct()
-    {
-        $this->evenements = new ArrayCollection();
-    }
+
 
 
 

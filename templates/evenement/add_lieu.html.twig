@@ -29,12 +29,14 @@
             {{ form_widget(lieuform.latitude) }}
             {{ form_end(lieuform.latitude) }}
         </div>
-        <div class="form-group"> Nom de la ville
+        {#  Nom de la ville  #}
+        <div class="form-group">
             {{ form_label(villeform.nom_ville) }}
             {{ form_widget(villeform.nom_ville) }}
             {{ form_end(villeform.nom_ville) }}
         </div>
-        <div class="form-group"> Code Postal
+        {#  Code Postal #}
+        <div class="form-group">
             {{ form_label(villeform.code_postal) }}
             {{ form_widget(villeform.code_postal) }}
             {{ form_end(villeform.code_postal) }}
@@ -44,9 +46,11 @@
 
         <button TYPE="submit" class="btn btn-primary">Valider</button>
         <button type="reset" class="btn btn-primary">Annuler</button>
-        {{ form_end(lieuform) }}
+        <button type="button" onclick="goBack()" class="btn btn-primary">Retour</button>
 
     </div>
+
+    {{ form_end(lieuform) }}
 {% endblock %}
 
 {% block title %} Ajoutez votre lieu |{{ parent() }}{% endblock %}

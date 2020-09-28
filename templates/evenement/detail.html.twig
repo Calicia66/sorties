@@ -10,6 +10,9 @@
         <div class="datecloture"> {{ event.datecloture|date("Y-m-d H:i:s") }} </div>
         <div class="etatsortie"> {{ event.etatsortie }}</div>
 
+    <div class="btn btn-user-edit">
+        <a href="{{ path('evenement_edit', {id: event.id})}}"> <button type="button" class="btn btn-primary">Modifier</button> </a>
+    </div>
     <div class="btn btn_back">
         <button type="button" onclick="goBack()" class="btn btn-primary">Retour</button>
     </div>

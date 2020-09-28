@@ -46,4 +46,21 @@ class Campus
         $this->libelle = $libelle;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->User;
+    }
+
+    /**
+     * @param mixed $User
+     */
+    public function setUser($User): void
+    {
+        $this->User = $User;
+    }
+
 }

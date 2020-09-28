@@ -6,6 +6,7 @@ use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\User;
 
 
 /**
@@ -71,14 +72,14 @@ class Evenement
 
     /**
      * Un événement possede un(e) ou plusieurs participant-(e)-(s) (utilisateur-(trice)-(s))
-     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="evenements")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="evenements")
      */
     private $users;
 
 
     //cascade={persist}
     /**
-     * @ORM\ManyToMany(targetEntity=Lieu::class, inversedBy="evenements")
+     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="evenements")
      */
     private $lieux;
 
@@ -235,21 +236,7 @@ class Evenement
 
 
 
-    /**
-     * @return mixed
-     */
-    public function getLieu()
-    {
-        return $this->lieu;
-    }
 
-    /**
-     * @param mixed $lieu
-     */
-    public function setLieu($lieu): void
-    {
-        $this->lieu = $lieu;
-    }
 
     /**
      * @return mixed
@@ -294,9 +281,9 @@ class Evenement
     }
 
     /**
-     * @return Collection|Lieu[]
+     * @return mixed
      */
-    public function getLieux(): Collection
+    public function getLieux()
     {
         return $this->lieux;
     }

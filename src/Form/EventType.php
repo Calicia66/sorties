@@ -21,8 +21,8 @@ class EventType extends AbstractType
         $builder
 
             //Creation du champ nom
-        ->add('nom', Texttype::class, [    'attr' => ['class' => 'form-control'],
-                'label'=> 'Titre de l evenement'])
+        ->add('nom', Texttype::class, [ 'label'=>'Titre de l événement',   'attr' => ['class' => 'form-control'],
+               ])
             //Création du champ description
             ->add('descriptioninfos', TextareaType::class, [    'attr' => ['class' => 'form-control'],
                 'label'=> 'Descriptif de l evenement'])

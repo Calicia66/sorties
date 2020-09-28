@@ -2,18 +2,20 @@
 
 namespace App\Form;
 
-use App\Entity\Campus;
+use App\Entity\Ville;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CampusType extends AbstractType
+class VilleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle',TextType::class, ['label'=>'Nom du campus',
+            ->add('nom_ville', TextType::class, ['label'=>'Nom de la ville',
+                'required'   => false,])
+            ->add('code_postal',TextType::class, ['label'=>'Code postal',
         'required'   => false,])
         ;
     }
@@ -21,7 +23,7 @@ class CampusType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Campus::class,
+            'data_class' => Ville::class,
         ]);
     }
 }

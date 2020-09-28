@@ -74,7 +74,7 @@ class UserController extends AbstractController
             //on envoie les données à doctrine sur le repository
             $hasher = $encoder->encodePassword($User, $User->getPassword());
             $User->setPassword($hasher);
-            //$em->persist($User);
+            $em->persist($User);
             //on finalise l'insertion des données sur la base de donnée Mysql
             $em->flush();
             //on fait une redirection vers une page à la suite

@@ -13,19 +13,19 @@ class CampusController extends AbstractController
     /**
      * @Route("/", name="campus")
      */
-    public function campus()
+    public function campus_all()
     {
         $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
         $campus =$campusRepo->findAll();
         return $this->render("campus/campus.html.twig", ["campus"=>$campus]);
     }
     /**
-     * @Route("/list/{id}", name="campus_list")
+     * @Route("/site/{id}", name="campus_site")
      */
-    public function campus_list($id)
+    public function OneCampus($id)
     {
         $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
-        $campus =$campusRepo->findAll();
-        return $this->render("campus/campus_.html.twig", ["campus"=>$campus]);
+        $campus =$campusRepo->find($id);
+        return $this->render("campus/campus.html.twig", ["campus"=>$campus]);
     }
 }
