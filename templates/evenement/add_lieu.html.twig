@@ -7,38 +7,44 @@
 
 
         {# Afficher le formulaire qui permet d'entrer des données  et mettre un bouton Validation #}
-        {{ form_start(eventform) }}
+        {{ form_start(lieuform) }}
 
         <div class="form-group"> Nom de lieu
-            {{ form_label(eventform.nom_lieu) }}
-            {{ form_widget(eventform.nom_lieu) }}
-            {{ form_end(eventform.nom_lieu) }}
+            {{ form_label(lieuform.nom_lieu) }}
+            {{ form_widget(lieuform.nom_lieu) }}
+            {{ form_end(lieuform.nom_lieu) }}
         </div>
         <div class="form-group"> Rue
-            {{ form_label(eventform.rue) }}
-            {{ form_widget(eventform.rue) }}
-            {{ form_end(eventform.rue) }}
+            {{ form_label(lieuform.rue) }}
+            {{ form_widget(lieuform.rue) }}
+            {{ form_end(lieuform.rue) }}
         </div>
         <div class="form-group"> Longitude
-            {{ form_label(eventform.longitude) }}
-            {{ form_widget(eventform.longitude) }}
-            {{ form_end(eventform.longitude) }}
+            {{ form_label(lieuform.longitude) }}
+            {{ form_widget(lieuform.longitude) }}
+            {{ form_end(lieuform.longitude) }}
         </div>
         <div class="form-group"> Latitude
-            {{ form_label(eventform.latitude) }}
-            {{ form_widget(eventform.latitude) }}
-            {{ form_end(eventform.latitude) }}
+            {{ form_label(lieuform.latitude) }}
+            {{ form_widget(lieuform.latitude) }}
+            {{ form_end(lieuform.latitude) }}
         </div>
         <div class="form-group"> Nom de la ville
-            {{ form_label(eventform.ville) }}
-            {{ form_widget(eventform.ville) }}
-            {{ form_end(eventform.ville) }}
+            {{ form_label(villeform.nom_ville) }}
+            {{ form_widget(villeform.nom_ville) }}
+            {{ form_end(villeform.nom_ville) }}
         </div>
+        <div class="form-group"> Code Postal
+            {{ form_label(villeform.code_postal) }}
+            {{ form_widget(villeform.code_postal) }}
+            {{ form_end(villeform.code_postal) }}
+        </div>
+
 
 
         <button TYPE="submit" class="btn btn-primary">Valider</button>
         <button type="reset" class="btn btn-primary">Annuler</button>
-        {{ form_end(eventform) }}
+        {{ form_end(lieuform) }}
 
     </div>
 {% endblock %}

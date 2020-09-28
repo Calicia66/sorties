@@ -29,9 +29,12 @@
                         <a class="nav-link" href="{{ url('evenement_list') }}">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Mon Compte <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ path('user_profil', {id: app.user.id}) }}">Mon Compte <span class="sr-only">(current)</span></a>
                     </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link  " >{{ app.user.username }}</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link  " href="{{ url('app_logout') }}">logout</a>
                         </li>

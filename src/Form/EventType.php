@@ -3,12 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Lieu;
-use App\Entity\Ville;
-use http\Env\Url;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\DomCrawler\Field\TextareaFormField;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -16,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Evenement;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 class EventType extends AbstractType
 {
@@ -65,12 +59,19 @@ class EventType extends AbstractType
            ])
            */
 
-
-
-
-
-
         ;
+                /*
+                $builder
+
+               //Tentative de faire affaire nom du lieu et nom de la rue
+                    ->add('lieux', TextType::class, [    'attr' => ['class' => 'form-control'],
+                        'label'=> 'Entrez votre latitude'])
+                    ->add('lieux', TextType::class, [    'attr' => ['class' => 'form-control'],
+                        'label'=> 'Entrez votre longitude'])
+                ;
+                 */
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -79,5 +80,11 @@ class EventType extends AbstractType
         $resolver->setDefaults([
             'date_class'=>Evenement::class,
         ]);
+
+        $resolver->setDefaults([
+            'date_class'=>Lieu::class,
+        ]);
+
+
     }
 }

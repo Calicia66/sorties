@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Campus;
 use App\Entity\Evenement;
 use App\Entity\Lieu;
+use App\Entity\Ville;
 use App\Form\EventType;
 use App\Form\LieuType;
+use App\Form\VilleType;
 use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,6 +29,7 @@ class EvenementController extends AbstractController
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
         //findAll permet de récupérer toute les sorties enregistrées.
         $event = $eventRepo->findAll();
+        //Permet d'aller récupérer les campus
         $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
         $campus =$campusRepo->findAll();
 
@@ -58,12 +61,15 @@ class EvenementController extends AbstractController
     {
         // Creer une instance de mon entity
         $event = new Evenement();
+        $lieu = new Lieu();
 
         //Creer mon formulaire
         $eventform = $this->createForm(EventType::class, $event);
+        $lieuform = $this->createForm(LieuType::class, $lieu);
 
         //Alimenter avec les données fournis dans le formulaire
         $eventform->handleRequest($request);
+        $lieuform->handleRequest($request);
 
         //Champs cachés
        //  $event->getOrganisateur();
@@ -73,6 +79,7 @@ class EvenementController extends AbstractController
         //si formulaire valider alors  données sauvegarder
         if ($eventform->isSubmitted()&& $eventform->isValid()){
             $em->persist($event);
+            $em->persist($lieu);
             $em->flush();
 
             //Afficher un message flash
@@ -87,7 +94,9 @@ class EvenementController extends AbstractController
 
 
         return $this->render('evenement/add.html.twig', [
-            "eventform"=> $eventform->createView()
+            "eventform"=> $eventform->createView(),
+            "lieuform"=> $lieuform->createView()
+
         ]);
     }
     /**
@@ -127,29 +136,33 @@ class EvenementController extends AbstractController
     //Création du formulaire Lieu
 
     /**
-     * @Route("/evenement/add_lieu", name="add_lieu")
+     * @Route("/add_lieu", name="add_lieu")
      */
     //méthode create qui permet d'afficher sur une page le formulaire
     //qui enregistre les données en BDD
     public function add_lieu(EntityManagerInterface $em, Request $request)
     {
         // Creer une instance de mon entity
-        $event = new Lieu();
+        $lieu = new Lieu();
+        $ville = new Ville();
 
         //Creer mon formulaire
-        $eventform = $this->createForm(LieuType::class, $event);
+        $lieuform = $this->createForm(LieuType::class, $lieu);
+        $villeform = $this->createForm(VilleType::class, $ville);
 
         //Alimenter avec les données fournis dans le formulaire
-        $eventform->handleRequest($request);
+        $lieuform->handleRequest($request);
+        $villeform->handleRequest($request);
 
         //Champs cachés
-        //  $event->getOrganisateur();
+        // $event->getOrganisateur();
         // $event->setEtatsortie();
 
 
         //si formulaire valider alors  données sauvegarder
-        if ($eventform->isSubmitted()&& $eventform->isValid()){
-            $em->persist($event);
+        if ($lieuform->isSubmitted()&& $lieuform->isValid()){
+            $em->persist($lieu);
+            $em->persist($ville);
             $em->flush();
 
             //Afficher un message flash
@@ -158,13 +171,14 @@ class EvenementController extends AbstractController
 
             //Redirige l utilisateur sur la page detail
             return  $this->redirectToRoute('evenement_list',[
-                'id'=>$event->getId()
+                'id'=>$lieu->getId()
             ]);
         }
 
 
         return $this->render('evenement/add_lieu.html.twig', [
-            "eventform"=> $eventform->createView()
+            "lieuform"=> $lieuform->createView(),
+            "villeform"=> $villeform->createView()
         ]);
     }
 

@@ -26,8 +26,8 @@ class LieuType extends AbstractType
                 'label'=> 'Entrez votre longitude'])
             //Création du champ ville
             ->add('ville', EntityType::class, [ 'class' => Ville::class,
-                'label' => 'nom_ville'
-            ])
+                'choice_label' => 'nom_ville'])
+
 
         ;
     }
