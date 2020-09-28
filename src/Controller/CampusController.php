@@ -28,4 +28,6 @@ class CampusController extends AbstractController
         $campus =$campusRepo->find($id);
         return $this->render("campus/campus.html.twig", ["campus"=>$campus]);
     }
+
+
 }

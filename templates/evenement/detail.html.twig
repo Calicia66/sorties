@@ -2,8 +2,16 @@
 
 {% block main %}
     <h2> Afficher une sortie</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
 
-        <div class="event"> {{ event.nom }} </div>
+            <div class="nom">
+                <label for="start">Nom de la sortie</label>
+
+            </div>
+
+            <div class="event"> {{ event.nom }} </div>
         <div class="duree"> {{ event.duree }} </div>
         <div class="descriptioninfos"> {{ event.descriptioninfos }}</div>
         <div class="datedebut"> {{ event.datedebut|date("Y-m-d H:i:s") }} </div>

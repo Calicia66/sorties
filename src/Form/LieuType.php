@@ -30,12 +30,5 @@ class LieuType extends AbstractType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        //Associer formulaire à la classe Lieu
-        $resolver->setDefaults([
-            'date_class'=>Lieu::class,
-        ]);
-    }
 
 }

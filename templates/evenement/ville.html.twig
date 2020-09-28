@@ -1,0 +1,54 @@
+
+{% extends 'layout.html.twig' %}{% block main %}
+
+<h1 class="text-center">Gérer les villes</h1>
+<h2>Filtrer les villes</h2>
+
+<div class="recherche">
+    <label for="start">Le nom contient :   </label>
+    <input id="oSaisie" name="oSaisie" type="text" class="form-control" aria-label="Saisie de mots clés" required="required">
+    <div class="input-group-append">
+        <button TYPE="submit" class="btn btn-primary">Rechercher</button>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="villes list">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Ville</th>
+                        <th scope="col">Code Postal</th>
+                        <th scope="col">Actions</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+
+                        <td>  {%  for ville in villes %}
+                                <ul> <a href="#"> {{ ville.nom_ville }}</a></ul>
+                            {%  endfor %}</td>
+
+                        <td> {%  for ville in villes %}
+                                <ul> <a href="#"> {{ ville.code_postal}}</a></ul>
+                            {%  endfor %}</td>
+
+                        <td> {%  for ville in villes %}
+                        <ul><a href="#">Modifier-Suprimer</a> </ul>
+                            {%  endfor %}</td>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="btn btn_back">
+        <button type="button" onclick="goBack()" class="btn btn-primary">Retour</button>
+
+    </div>
+    {% endblock %}{% block title %} Les sorties ! {% endblock %}
+
