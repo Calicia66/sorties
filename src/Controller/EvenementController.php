@@ -6,8 +6,10 @@ use App\Entity\Campus;
 use App\Entity\Evenement;
 use App\Entity\Lieu;
 use App\Entity\Ville;
+use App\Form\CampusType;
 use App\Form\EventType;
 use App\Form\LieuType;
+
 use App\Form\VilleType;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -49,6 +51,20 @@ class EvenementController extends AbstractController
 
         return $this->render('evenement/detail.html.twig', [
             "event"=>$event
+        ]);
+    }
+
+    /**
+     * @Route("/edit/{id}", name="evenement_edit", requirements={"id": "\d+"})
+     */
+    //méthode detail qui permet d'afficher sur une page un évènement particulier enregistré en BDD
+    public function edit_detail($id)
+    {
+        $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
+        $event = $eventRepo->findByEvent($id);
+
+        return $this->render('evenement/switch.html.twig', [
+            "events"=>$event
         ]);
     }
 
@@ -99,22 +115,6 @@ class EvenementController extends AbstractController
 
         ]);
     }
-    /**
-     * @Route("/evenement/switch", name="evenement_switch")
-     */
-    //méthode switch qui permet d'afficher sur une page de modifier les données
-    public function switch(EntityManagerInterface $em)
-    {
-        //récupérer les sorties en base de donnée
-        $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
-        //findAll permet de récupérer toute les sorties enregistrées.
-        $event = $eventRepo->findAll();
-
-
-        return $this->render('evenement/switch.html.twig', [
-            "events"=>$event
-        ]);
-    }
 
     /**
      * @Route("/evenement/cancel", name="evenement_cancel")
@@ -133,6 +133,23 @@ class EvenementController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/evenement/ville", name="evenement_ville")
+     */
+    //méthode ville qui permet de gerer des villes
+    public function ville(EntityManagerInterface $em)
+    {
+        //récupérer les villes en base de donnée
+        $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
+        //findAll permet de récupérer toute les sorties enregistrées.
+        $event = $eventRepo->findAll();
+
+
+        return $this->render('evenement/ville.html.twig', [
+            "events"=>$event
+        ]);
+    }
     //Création du formulaire Lieu
 
     /**
@@ -145,15 +162,16 @@ class EvenementController extends AbstractController
         // Creer une instance de mon entity
         $lieu = new Lieu();
         $ville = new Ville();
+        $campus =new campus();
 
         //Creer mon formulaire
         $lieuform = $this->createForm(LieuType::class, $lieu);
         $villeform = $this->createForm(VilleType::class, $ville);
-
+        $campusform = $this->createForm(CampusType::class, $campus);
         //Alimenter avec les données fournis dans le formulaire
         $lieuform->handleRequest($request);
         $villeform->handleRequest($request);
-
+        $campusform->handleRequest($request);
         //Champs cachés
         // $event->getOrganisateur();
         // $event->setEtatsortie();
@@ -163,6 +181,7 @@ class EvenementController extends AbstractController
         if ($lieuform->isSubmitted()&& $lieuform->isValid()){
             $em->persist($lieu);
             $em->persist($ville);
+            $em->persist($campus);
             $em->flush();
 
             //Afficher un message flash
@@ -178,7 +197,8 @@ class EvenementController extends AbstractController
 
         return $this->render('evenement/add_lieu.html.twig', [
             "lieuform"=> $lieuform->createView(),
-            "villeform"=> $villeform->createView()
+            "villeform"=> $villeform->createView(),
+            "campusform"=> $campusform->createView()
         ]);
     }
 

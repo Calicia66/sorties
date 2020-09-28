@@ -2,19 +2,21 @@
 
 {% block main %}
     <h2 class="text-center" > Ajout d'un évènement </h2>
-    <div class="form-group">
-
-
-
+    <div class="form-group" id="event_form">
     {# Afficher le formulaire qui permet d'entrer des données  et mettre un bouton Validation #}
     {{ form_start(eventform) }}
     {{ form_widget(eventform) }}
-
-    <button TYPE="submit" class="btn btn-primary">Valider</button>
-        <button type="reset" class="btn btn-primary">Annuler</button>
     {{ form_end(eventform) }}
-
     </div>
+
+
+
+
+    <div>
+        <button TYPE="submit" class="btn btn-primary">Valider</button>
+        <button type="reset" class="btn btn-primary">Annuler</button>
+    </div>
+
 {% endblock %}
 
 {% block title %} Ajoutez votre évènement |{{ parent() }}{% endblock %}
