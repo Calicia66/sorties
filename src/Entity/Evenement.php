@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EvenementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -55,15 +57,34 @@ class Evenement
      */
     private $urlPhoto;
 
+
     /**
-     * @ORM\Column (type="string", nullable=true)
-     */
+    * Un événement est organisé par un-(e) et un-(e) seul-(e) utilisateur-(trice)
+    * @ORM\Column (type="string", nullable=true)
+    */
     private $organisateur;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $places;
+
+    /**
+     * Un événement possede un(e) ou plusieurs participant-(e)-(s) (utilisateur-(trice)-(s))
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="evenements")
+     */
+    private $users;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Lieu::class, inversedBy="evenements")
+     */
+    private $lieux;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+        $this->lieux = new ArrayCollection();
+    }
 
 
     /**
@@ -210,21 +231,7 @@ class Evenement
         $this->organisateur = $organisateur;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getVille()
-    {
-        return $this->ville;
-    }
 
-    /**
-     * @param mixed $ville
-     */
-    public function setVille($ville): void
-    {
-        $this->ville = $ville;
-    }
 
     /**
      * @return mixed
@@ -258,6 +265,57 @@ class Evenement
         $this->places = $places;
     }
 
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Lieu[]
+     */
+    public function getLieux(): Collection
+    {
+        return $this->lieux;
+    }
+
+    public function addLieux(Lieu $lieux): self
+    {
+        if (!$this->lieux->contains($lieux)) {
+            $this->lieux[] = $lieux;
+        }
+
+        return $this;
+    }
+
+    public function removeLieux(Lieu $lieux): self
+    {
+        if ($this->lieux->contains($lieux)) {
+            $this->lieux->removeElement($lieux);
+        }
+
+        return $this;
+    }
 
 
 

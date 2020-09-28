@@ -11,11 +11,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Response;
-
+/**
+ * @Route("/user")
+ */
 class UserController extends AbstractController
 {
     /**
-     * @Route("/register", name="register")
+     * @Route("/register", name="user_register")
      */
     public function register(EntityManagerInterface $em,
                              Request $request,
@@ -53,7 +55,7 @@ class UserController extends AbstractController
      * basé sur la fonction Register mais prenant comme entité un utilisateur existant
      * l'id est directement transformer en objet User avec un accès sur toutes les méthodes
      * et atttributs
-     * @Route("/editor/{id}", name="editor")
+     * @Route("/editor/{id}", name="user_editor")
      */
         public function editor(EntityManagerInterface $em, Request $request, User $User, UserPasswordEncoderInterface $encoder)
     {
@@ -85,7 +87,7 @@ class UserController extends AbstractController
     //liste des participants
 
     /**
-     * @Route("/users", name="users_list")
+     * @Route("/list", name="user_list")
      */
     public function participants()
     {
@@ -99,7 +101,7 @@ class UserController extends AbstractController
 
     /**
      * Affiche la page par défaut du projet Bucket-list
-     * @Route("/profil/{id}", name="profil"),
+     * @Route("/profil/{id}", name="user_profil"),
      *    methods={"GET"}
      *     )
      *
@@ -113,14 +115,22 @@ class UserController extends AbstractController
 
 
     }
-    //Creation d'une nouvelle route pour la déconnexion
-
     /**
-     * @Route("/logout", name="logout")
+     * Affiche la page profil d'un participant
+     * @Route("/participant/{id}", name="user_participant"),
+     *    methods={"GET"}
+     *     )
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-public function logout()
-{
+    public function participant($id)
+    {
+        $userRepo = $this->getDoctrine()->getRepository(User::class);
+        $profil =$userRepo->find($id);
+        return $this->render("user/afficher_profil.html.twig", ["profil"=>$profil]);
 
-}
+
+    }
+
 
 }

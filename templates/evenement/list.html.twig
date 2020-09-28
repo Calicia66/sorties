@@ -12,9 +12,9 @@
                         Campus
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">St Herblain</a>
-                        <a class="dropdown-item" href="#">Herblay</a>
-                        <a class="dropdown-item" href="#">Cherbourg</a>
+                        {%  for camp in campus %}
+                        <a class="dropdown-item" href="{{ path('main', {id: camp.id}) }}"> {{ camp.libelle }}</a>
+                        {% endfor %}
                     </div>
 
                 </div>
@@ -84,14 +84,19 @@
                     </thead>
                     <tbody>
                     {%  for event in events %}
+
                         <tr>
-                            <td> {{ event.nom }}</td>
+
+                            <td><a href="{{ path('evenement_detail', {id: event.id}) }}"> {{ event.nom }}</a></td>
+
                             <td> {{event.datedebut|date("Y-m-d")  }}</td>
                             <td> {{event.datecloture|date("Y-m-d")  }}</td>
                             {#  <td> {{ event.place }}</td>#}                       <td> {{ event.etatsortie }}</td>
-                            {#  <td> {{ event.inscrit }}</td> #}                       <td> {{ event.organisateur }}</td>
+                            {#  <td> {{ event.inscrit }}</td> #}                       <td> <a href="{{ path('evenement_list', {pseudo: event.organisateur}) }}"> {{ event.organisateur }}</a></td>
                             {# <td> {{ event.actions}}</td>  #}                   </tr>
+
                     {%  endfor %}
+
                     </tbody>
 
 
@@ -101,8 +106,8 @@
     </div>
 
 
-    <div class="Créer une sortie">
-        <button type="button" class="btn btn-primary">Créer une sortie</button>
+    <div class="btn btn-event-edit">
+        <a href="{{ path('evenement_add')}}"> <button type="button" class="btn btn-primary">Créer une sortie</button> </a>
     </div>
 {% endblock %}{% block title %} Les sorties ! {% endblock %}
 
