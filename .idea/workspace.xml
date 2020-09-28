@@ -26,16 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e33d502-f6f3-43b4-9791-c0ee7e86991f" name="Default Changelist" comment="Début des liens entre les différentes pages">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EvenementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvenementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evenement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evenement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Lieu.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Lieu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Ville.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Ville.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EventType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EventType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/LieuType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/LieuType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evenement/add_lieu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evenement/add_lieu.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +147,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1hzgQdw8bmKzq4bmcR7oBTY1lj2" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -164,6 +158,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Sortir.com-master" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -232,7 +228,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Evenement" />
+                        <option value="origin/Evenement" />
                       </list>
                     </value>
                   </entry>
