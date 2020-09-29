@@ -25,18 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e33d502-f6f3-43b4-9791-c0ee7e86991f" name="Default Changelist" comment="Début des liens entre les différentes pages">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EvenementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvenementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evenement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evenement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Lieu.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Lieu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Ville.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Ville.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EventType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EventType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/LieuType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/LieuType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evenement/add_lieu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evenement/add_lieu.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="4e33d502-f6f3-43b4-9791-c0ee7e86991f" name="Default Changelist" comment="Rajoutez champ ville et code postal" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +152,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Sortir.com-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -178,7 +167,9 @@
       <workItem from="1601019320631" duration="18286000" />
       <workItem from="1601277368553" duration="201000" />
       <workItem from="1601277734551" duration="868000" />
-      <workItem from="1601278609576" duration="8487000" />
+      <workItem from="1601278609576" duration="9132000" />
+      <workItem from="1601361686520" duration="767000" />
+      <workItem from="1601362971669" duration="358000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1601019485338</created>
@@ -215,7 +206,28 @@
       <option name="project" value="LOCAL" />
       <updated>1601045924836</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Rajoutez champ ville et code postal">
+      <created>1601287144802</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1601287144802</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Rajoutez champ ville et code postal">
+      <created>1601363163633</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1601363163633</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Rajoutez champ ville et code postal">
+      <created>1601363252635</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1601363252635</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +264,8 @@
     <MESSAGE value="Création formulaire ajout d'un lieu" />
     <MESSAGE value="Création formulaire ajout d'un lieu(2)" />
     <MESSAGE value="Début des liens entre les différentes pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Début des liens entre les différentes pages" />
+    <MESSAGE value="Rajoutez champ ville et code postal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rajoutez champ ville et code postal" />
   </component>
   <component name="WindowStateProjectService">
     <state x="562" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1601286438281">
@@ -263,13 +276,13 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601285857120" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601282546778">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601362967103">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601282546778" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601045940420">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601362967103" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601287159285">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601045940420" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601287159285" />
   </component>
 </project>
