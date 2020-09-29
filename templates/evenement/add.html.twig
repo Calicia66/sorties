@@ -2,19 +2,148 @@
 
 {% block main %}
     <h2 class="text-center" > Ajout d'un évènement </h2>
-    <div class="form-group">
 
-
+    <div>
+        {{ form_start(eventform) }}
+    <div class="form-group" id="event_form" >
 
     {# Afficher le formulaire qui permet d'entrer des données  et mettre un bouton Validation #}
-    {{ form_start(eventform) }}
-    {{ form_widget(eventform) }}
 
-    <button TYPE="submit" class="btn btn-primary">Valider</button>
-        <button type="reset" class="btn btn-primary">Annuler</button>
-    {{ form_end(eventform) }}
+        <div class="form-control">
+            <i class="fa fa-calendar"></i> {{ form_label(eventform.nom) }}
+            {{ form_widget(eventform.nom) }}
+
+            <small>{{ form_help(eventform.nom) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(eventform.nom) }}
+            </div>
+        </div>
+
+
+        <div class="form-control">
+            <i class="fa fa-calendar"></i> {{ form_label(eventform.descriptioninfos) }}
+            {{ form_widget(eventform.descriptioninfos) }}
+
+            <small>{{ form_help(eventform.descriptioninfos) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(eventform.descriptioninfos) }}
+            </div>
+        </div>
+
+        <div class="form-control">
+            <i class="fa fa-calendar"></i> {{ form_label(eventform.datedebut) }}
+            {{ form_widget(eventform.datedebut) }}
+
+            <small>{{ form_help(eventform.datedebut) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(eventform.datedebut) }}
+            </div>
+        </div>
+
+        <div class="form-control">
+            <i class="fa fa-calendar"></i> {{ form_label(eventform.duree) }}
+            {{ form_widget(eventform.duree) }}
+
+            <small>{{ form_help(eventform.duree) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(eventform.duree) }}
+            </div>
+        </div>
+
+        <div class="form-control">
+            <i class="fa fa-calendar"></i> {{ form_label(eventform.datecloture) }}
+            {{ form_widget(eventform.datecloture) }}
+
+            <small>{{ form_help(eventform.datecloture) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(eventform.datecloture) }}
+            </div>
+        </div>
+    </div>
+    <div class="campus_site input-group mb-3">
+
+
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Campus</span>
+            </div>
+            <input type="text" class="form-control" placeholder="{{ app.user.campus.id }}"
+                   id="campus" value="{{ app.user.campus.id }}"
+                   aria-label="Username" aria-describedby="basic-addon1" aria-hidden="true" hidden>
+             <input type="text" class="form-control" placeholder="{{ app.user.campus.libelle }}"
+                    id="campus_name" value="{{ app.user.campus.libelle }}"
+                    aria-label="Username" aria-describedby="basic-addon2" readonly>
 
     </div>
+
+    <div class="input-group-prepend input-group mb-3" id="lieu_form">
+        {# Afficher le formulaire qui permet d'entrer des données  et mettre un bouton Validation #}
+
+        <div class="form-control">
+            <i class="fa fa-calendar"></i> {{ form_label(lieuform.nom_lieu) }}
+            {{ form_widget(lieuform.nom_lieu) }}
+
+            <small>{{ form_help(lieuform.nom_lieu) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(lieuform.nom_lieu) }}
+            </div>
+        </div>
+
+        <div class="form-control">
+            <i class="fa fa-calendar"></i> {{ form_label(lieuform.rue) }}
+            {{ form_widget(lieuform.rue) }}
+
+            <small>{{ form_help(lieuform.rue) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(lieuform.rue) }}
+            </div>
+        </div>
+
+        <div class="form-control">
+            <i class="fa fa-calendar"></i> {{ form_label(lieuform.longitude) }}
+            {{ form_widget(lieuform.longitude) }}
+
+            <small>{{ form_help(lieuform.longitude) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(lieuform.longitude) }}
+            </div>
+        </div>
+
+        <div class="form-control">
+            <i class="fa fa-calendar"></i> {{ form_label(lieuform.latitude) }}
+            {{ form_widget(lieuform.latitude) }}
+
+            <small>{{ form_help(lieuform.latitude) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(lieuform.latitude) }}
+            </div>
+        </div>
+    </div>
+    <div class="btn btn-action">
+        <button TYPE="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+    <div class="btn btn-action">
+        <!--ajouter une route vers méthode publier-->
+        <a href="" ><button TYPE="button" class="btn btn-primary">Publier</button></a>
+    </div>
+    <div class="btn btn-cancel">
+        <button type="reset" class="btn btn-primary">Annuler</button>
+    </div>
+    <div class="btn btn-back">
+        <button type="button" onclick="goBack()" class="btn btn-primary">Retour</button>
+    </div>
+        {{ form_end(eventform) }}
+    </div>
+
 {% endblock %}
 
 {% block title %} Ajoutez votre évènement |{{ parent() }}{% endblock %}

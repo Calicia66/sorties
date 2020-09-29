@@ -55,9 +55,9 @@ class UserController extends AbstractController
      * basé sur la fonction Register mais prenant comme entité un utilisateur existant
      * l'id est directement transformer en objet User avec un accès sur toutes les méthodes
      * et atttributs
-     * @Route("/editor/{id}", name="user_editor")
+     * @Route("/edit/{id}", name="user_edit")
      */
-        public function editor(EntityManagerInterface $em, Request $request, User $User, UserPasswordEncoderInterface $encoder)
+        public function edit(EntityManagerInterface $em, Request $request, User $User, UserPasswordEncoderInterface $encoder)
     {
 
         $editorForm =$this->createForm(RegisterType::class, $User);
@@ -74,7 +74,7 @@ class UserController extends AbstractController
             //on envoie les données à doctrine sur le repository
             $hasher = $encoder->encodePassword($User, $User->getPassword());
             $User->setPassword($hasher);
-            //$em->persist($User);
+            $em->persist($User);
             //on finalise l'insertion des données sur la base de donnée Mysql
             $em->flush();
             //on fait une redirection vers une page à la suite

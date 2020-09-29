@@ -24,20 +24,11 @@ class LieuType extends AbstractType
                 'label'=> 'Entrez votre latitude'])
             ->add('longitude', TextType::class, [    'attr' => ['class' => 'form-control'],
                 'label'=> 'Entrez votre longitude'])
-            //Création du champ ville
-            ->add('ville', EntityType::class, [ 'class' => Ville::class,
-                'choice_label' => 'nom_ville'])
+
 
 
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        //Associer formulaire à la classe Lieu
-        $resolver->setDefaults([
-            'date_class'=>Lieu::class,
-        ]);
-    }
 
 }

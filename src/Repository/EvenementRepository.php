@@ -29,6 +29,28 @@ class EvenementRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findByCampus()
+    {
+
+        $qb = $this->createQueryBuilder('e');
+        $qb->andWhere('e.campus = Nantes');
+        $qb->setMaxResults(20);
+        $query = $qb->getQuery();
+        return $query->getResult();
+
+
+        /*
+        $em = $this->getEntityManager();
+        //Je sélectionne tous les colonnes depuis Evenement avec mon e
+        $dql = "SELECT e
+                FROM App\Entity\Evenement e
+                WHERE e.campus = Nantes";
+        $query = $em->createQuery($dql);
+        $query->setMaxResults(20);
+        return $query->getResult();
+        */
+    }
+
 
 
 

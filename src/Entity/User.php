@@ -14,6 +14,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    public function __construct()
+    {
+        $this->evenements = new ArrayCollection();
+
+    }
 
     /**
      * @ORM\Id
@@ -25,28 +30,28 @@ class User implements UserInterface
     /**
      * @ORM\Column (type="string", length=30)
      */
-private $username;
+    private $username;
     /**
      * @ORM\Column (type="string", length=30)
      */
-private $nom;
+    private $nom;
 
     /**
      * @ORM\Column (type="string", length=30)
      */
-private $prenom;
+    private $prenom;
     /**
      * @ORM\Column (type="string", length=15)
      */
-private $telephone;
+    private $telephone;
     /**
      * @ORM\Column (type="string", length=20)
      */
-private $email;
+    private $email;
     /**
      * @ORM\Column (type="string", length=255)
      */
-private $password;
+    private $password;
     /**
      * @ORM\Column (type="boolean")
      */
@@ -64,21 +69,19 @@ private $password;
      *@ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="User")
      *
      */
-   private $campus;
+    private $campus;
+
 
 
 //pas sauvegardé dans la base
     private $roles;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Evenement::class, mappedBy="users")
+     * @ORM\ManyToMany (targetEntity="App\Entity\Evenement", inversedBy="users")
      */
     private $evenements;
 
-    public function __construct()
-    {
-        $this->evenements = new ArrayCollection();
-    }
+
 
 
 
@@ -263,7 +266,7 @@ private $password;
      * @return mixed
      */
 
-        public function getRoles(): array
+    public function getRoles(): array
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
@@ -318,5 +321,3 @@ private $password;
         return $this;
     }
 }
-
-

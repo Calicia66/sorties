@@ -14,6 +14,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * @Route("/evenement", )
  */
@@ -31,10 +33,10 @@ class EvenementController extends AbstractController
         $event = $eventRepo->findAll();
         //Permet d'aller récupérer les campus
         $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
-        $campus =$campusRepo->findAll();
+        $campus = $campusRepo->findAll();
 
         return $this->render('evenement/list.html.twig', [
-            "events"=>$event, "campus"=>$campus
+            "events" => $event, "campus" => $campus
         ]);
     }
 
@@ -48,10 +50,22 @@ class EvenementController extends AbstractController
         $event = $eventRepo->findByEvent($id);
 
         return $this->render('evenement/detail.html.twig', [
-            "event"=>$event
+            "event" => $event
         ]);
     }
+    /**
+     * @Route("/edit/{id}", name="evenement_edit", requirements={"id": "\d+"})
+     */
+    //méthode detail qui permet d'afficher sur une page un évènement particulier enregistré en BDD
+    public function edit_detail($id)
+    {
+        $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
+        $event = $eventRepo->findByEvent($id);
 
+        return $this->render('evenement/switch.html.twig', [
+            "events" => $event
+        ]);
+    }
     /**
      * @Route("/add", name="evenement_add")
      */
@@ -62,43 +76,90 @@ class EvenementController extends AbstractController
         // Creer une instance de mon entity
         $event = new Evenement();
         $lieu = new Lieu();
-
+        //  On récupère le nom du campus de l'utilisateur courant
         //Creer mon formulaire
         $eventform = $this->createForm(EventType::class, $event);
         $lieuform = $this->createForm(LieuType::class, $lieu);
-
+        //  $campusform = $this->createForm(LieuType::class, $campus);
         //Alimenter avec les données fournis dans le formulaire
         $eventform->handleRequest($request);
         $lieuform->handleRequest($request);
-
+        // $campusform->handleRequest($request);
         //Champs cachés
-       //  $event->getOrganisateur();
-         // $event->setEtatsortie();
+        //  $event->getOrganisateur();
+        // $event->setEtatsortie();
 
 
         //si formulaire valider alors  données sauvegarder
-        if ($eventform->isSubmitted()&& $eventform->isValid()){
+        if ($eventform->isSubmitted() && $eventform->isValid()) {
             $em->persist($event);
             $em->persist($lieu);
+            //  $em->persist($campus);
             $em->flush();
 
             //Afficher un message flash
-            $this->addFlash('success','Votre evenement a bien été enregistré');
+            $this->addFlash('success', 'Votre evenement a bien été enregistré');
 
 
             //Redirige l utilisateur sur la page detail
-            return  $this->redirectToRoute('evenement_detail',[
-                'id'=>$event->getId()
+            return $this->redirectToRoute('evenement_detail', [
+                'id' => $event->getId()
             ]);
         }
-
-
         return $this->render('evenement/add.html.twig', [
-            "eventform"=> $eventform->createView(),
-            "lieuform"=> $lieuform->createView()
+            "eventform" => $eventform->createView(),
+            "lieuform" => $lieuform->createView()
 
         ]);
     }
+        /**
+         * @Route("/edit/{id}", name="evenement_edit")
+         */
+        //méthode create qui permet d'afficher sur une page le formulaire
+        //qui enregistre les données en BDD
+    public function edit(EntityManagerInterface $em, Request $request, Evenement $id)
+        {
+            // Creer une instance de mon entity
+            $event = $id;
+            $lieu = $event->getLieux();
+            //  On récupère le nom du campus de l'utilisateur courant
+            //Creer mon formulaire
+            $eventform = $this->createForm(EventType::class, $event);
+            $lieuform = $this->createForm(LieuType::class, $lieu);
+            //  $campusform = $this->createForm(LieuType::class, $campus);
+            //Alimenter avec les données fournis dans le formulaire
+            $eventform->handleRequest($request);
+            $lieuform->handleRequest($request);
+            // $campusform->handleRequest($request);
+            //Champs cachés
+            //  $event->getOrganisateur();
+            // $event->setEtatsortie();
+
+
+            //si formulaire valider alors  données sauvegarder
+            if ($eventform->isSubmitted() && $eventform->isValid()) {
+               // $em->persist($event);
+               // $em->persist($lieu);
+                //  $em->persist($campus);
+                $em->flush();
+
+                //Afficher un message flash
+                $this->addFlash('success', 'Votre evenement a bien été enregistré');
+
+
+                //Redirige l utilisateur sur la page detail
+                return $this->redirectToRoute('evenement_detail', [
+                    'id' => $event->getId()
+                ]);
+            }
+
+            return $this->render('evenement/add.html.twig', [
+                "eventform" => $eventform->createView(),
+                "lieuform" => $lieuform->createView()
+
+            ]);
+        }
+
     /**
      * @Route("/evenement/switch", name="evenement_switch")
      */
@@ -112,7 +173,7 @@ class EvenementController extends AbstractController
 
 
         return $this->render('evenement/switch.html.twig', [
-            "events"=>$event
+            "events" => $event
         ]);
     }
 
@@ -129,7 +190,7 @@ class EvenementController extends AbstractController
 
 
         return $this->render('evenement/cancel.html.twig', [
-            "events"=>$event
+            "events" => $event
         ]);
     }
 
@@ -181,6 +242,56 @@ class EvenementController extends AbstractController
             "villeform"=> $villeform->createView()
         ]);
     }
+
+    /**
+     * @Route("/suscribe/{event}", name="event_suscribe")
+     */
+    public function suscribe (EntityManagerInterface $em, Request $request, Evenement $id)
+    {
+// Creer une instance de mon entity
+        $event = $id;
+        $lieu = $event->getLieux();
+        //  On récupère le nom du campus de l'utilisateur courant
+        //Creer mon formulaire
+        $eventform = $this->createForm(EventType::class, $event);
+        $lieuform = $this->createForm(LieuType::class, $lieu);
+        //  $campusform = $this->createForm(LieuType::class, $campus);
+        //Alimenter avec les données fournis dans le formulaire
+        $eventform->handleRequest($request);
+        $lieuform->handleRequest($request);
+        // $campusform->handleRequest($request);
+        //Champs cachés
+        //  $event->getOrganisateur();
+        // $event->setEtatsortie();
+
+
+        //si formulaire valider alors  données sauvegarder
+        if ($eventform->isSubmitted() && $eventform->isValid()) {
+            // $em->persist($event);
+            // $em->persist($lieu);
+            //  $em->persist($campus);
+            $em->flush();
+
+            //Afficher un message flash
+            $this->addFlash('success', 'Votre evenement a bien été enregistré');
+
+
+            //Redirige l utilisateur sur la page detail
+            return $this->redirectToRoute('evenement_detail', [
+                'id' => $event->getId()
+            ]);
+
+        }
+        return $this->render('evenement/add_lieu.html.twig', [
+            "lieuform"=> $lieuform->createView(),
+            "eventform"=> $eventform->createView()
+        ]);
+
+
+
+    }
+
+
 
 
 

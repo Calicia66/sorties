@@ -47,7 +47,7 @@ class Lieu
     private $ville;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Evenement::class, mappedBy="lieux")
+     * @ORM\OneToMany(targetEntity=Evenement::class, mappedBy="lieux")
      */
     private $evenements;
 

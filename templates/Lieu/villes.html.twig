@@ -1,8 +1,8 @@
 
 {% extends 'layout.html.twig' %}{% block main %}
 
-    <h1 class="text-center">Gérer les campus</h1>
-    <h2>Filtrer les campus</h2>
+    <h1 class="text-center">Gérer les villes</h1>
+    <h2>Filtrer les villeus</h2>
 
     <div class="recherche">
         <label for="start">Le nom contient :   </label>
@@ -13,12 +13,11 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="campus list">
-                {#  <form method="post" action="{ }"></form> #}
+            <div class="villeus list">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Campus</th>
+                        <th scope="col">villeus</th>
                         <th scope="col">Actions</th>
 
                     </tr>
@@ -27,27 +26,29 @@
                     <tr>
 
                         <td>  <ul class="list-group">
-                         {%  for camp in campus %}
+                                {%  for ville in villes %}
 
 
 
                                     <li class="list-group-item list-group-item-light">
-                                        <a href="{{ path('main', {id: camp.id}) }}" > <span>{{ camp.libelle }}</span></a>
+                                        <a href="{{ path('main', {id: ville.id}) }}" > <span>{{ ville.nomville }}</span></a>
                                     </li>
 
-                            {%  endfor %}
+                                {%  endfor %}
                             </ul>
                         </td>
 
 
                         <td>  <ul class="list-group">
-                                {%  for camp in campus %}
-                    {{ dump(camp) }}
+                                {%  for ville in villes %}
+
+
+
                                     <li  class="list-group-item list-group-item-light">
 
-                                        <span ><a href="{{ path('campus_edit', {id: camp.id, libelle: camp.libelle }) }}"> <span>Modifier</span></a></span>
+                                        <span ><a href="{{ path('main', {id: ville.id}) }}"> <span>Modifier</span></a></span>
                                         <span>&nbsp;</span>
-                                        <span ><a href="{{ path('main', {id: camp.id}) }}"> <span>Supprimer</span></a></span>
+                                        <span ><a href="{{ path('main', {id: ville.id}) }}"> <span>Supprimer</span></a></span>
                                     </li>
 
                                 {%  endfor %}
@@ -56,9 +57,7 @@
                     </tbody>
                 </table>
 
-                <div class="btn btn-action">
-                    <button TYPE="submit" class="btn btn-primary">Enregistrer</button>
-                </div>
+
             </div>
         </div>
     </div>

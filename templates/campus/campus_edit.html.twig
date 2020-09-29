@@ -32,7 +32,7 @@
 
 
                                     <li class="list-group-item list-group-item-light">
-                                        <a href="{{ path('main', {id: camp.id}) }}" > <span>{{ camp.libelle }}</span></a>
+                                        <input type="text" id="libelle" name="libelle">
                                     </li>
 
                             {%  endfor %}
@@ -42,10 +42,10 @@
 
                         <td>  <ul class="list-group">
                                 {%  for camp in campus %}
-                    {{ dump(camp) }}
+
                                     <li  class="list-group-item list-group-item-light">
 
-                                        <span ><a href="{{ path('campus_edit', {id: camp.id, libelle: camp.libelle }) }}"> <span>Modifier</span></a></span>
+                                        <span ><a href="{{ path('campus', {id: camp.id}) }}"> <span>Valider</span></a></span>
                                         <span>&nbsp;</span>
                                         <span ><a href="{{ path('main', {id: camp.id}) }}"> <span>Supprimer</span></a></span>
                                     </li>
