@@ -13,7 +13,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         {%  for camp in campus %}
-                        <a class="dropdown-item" href="{{ path('main', {id: camp.id}) }}"> {{ camp.libelle }}</a>
+                        <a class="dropdown-item" href="{{ path('evenement_list_campus', {id: camp.id}) }}"> {{ camp.libelle }}</a>
                         {% endfor %}
                     </div>
 
