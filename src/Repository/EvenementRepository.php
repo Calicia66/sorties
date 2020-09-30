@@ -6,6 +6,7 @@ use App\Entity\Evenement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @method Evenement|null find($id, $lockMode = null, $lockVersion = null)
@@ -36,7 +37,19 @@ class EvenementRepository extends ServiceEntityRepository
 
     }
 
+    public function findByOwner()
+    {
+//On fait un select basé sur l'id du campus fournit par l'utilisateur connecté
+        $qb = $this->createQueryBuilder('e');
+        $qb->andWhere('e.organisateur = :val')
+            ->setParameter('val', 'mama')
+            ->orderBy('e.id', 'ASC')
+        ;
+        $qb->setMaxResults(30);
+        $query = $qb->getQuery();
+        return new Paginator($query);
 
+    }
 
 
     // /**

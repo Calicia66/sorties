@@ -61,6 +61,28 @@ $events= $eventRepo->findAll();
         ]);
     }
     /**
+     * @Route("/query/", name="evenement_query")
+     * @param $id
+     * @return mixed
+     */
+    //méthode list qui permet d'afficher sur une page la liste des évènements enregistrés en BDD
+    public function listQuery()
+    {
+        //récupérer la listes des sorties dans la base de donnée
+        $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
+        //On filtre selon le campus
+
+        $events= $eventRepo->findByOwner();
+
+        //Permet d'aller récupérer les campus
+        $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
+        $campus = $campusRepo->findAll();
+
+        return $this->render('evenement/list.html.twig', [
+            "events" => $events, "campus" => $campus,
+        ]);
+    }
+    /**
      * @Route("/detail/{id}", name="evenement_detail", requirements={"id": "\d+"})
      * @param $id
      */

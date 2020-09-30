@@ -3,6 +3,7 @@
 
     <h1 class="text-center">Filtrer les sorties</h1>
     <div class="container">
+    <form method="post" action="{{ path('evenement_query') }}">
         <div class="row">
             <div class="col-sm">
 
@@ -41,7 +42,7 @@
 
             <div class="checkbox">
                 <div>
-                    <input type="checkbox"  name="sortie dont organisateur"
+                    <input type="checkbox"  id="r" name="sortie_owner"
                            checked>
                     <label for="sortie dont organisateur">sortie dont je suis l'organisateur/trice</label>
                 </div>
@@ -62,7 +63,7 @@
                 </div>
             </div>
             <div class="bouton_recherche">
-                <button type="button" class="btn btn-primary">Recherche</button>
+                <button type="submit" class="btn btn-primary">Recherche</button>
             </div>
 
 
@@ -104,7 +105,7 @@
 
                 </table>
             </div>
-        </div>
+        </div></form>
     </div>
 
 
