@@ -19,14 +19,37 @@ class EvenementRepository extends ServiceEntityRepository
         parent::__construct($registry, Evenement::class);
     }
 
-    public function findByEvent($value): ?Evenement
+    public function findByCampus(): ?Evenement
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.id = :val')
-            ->setParameter('val', $value)
+
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.id = :val')
+            ->setParameter('val', 'mama')
+            ->orderBy('c.id', 'ASC')
+            ->setMaxResults(10)
             ->getQuery()
-            ->getOneOrNullResult()
-            ;
+            ->getResult();
+
+        /* Version avec DQL*/
+        /* version avec Query Builder
+        $em = $this->getEntityManager();
+        $dql = "SELECT s,c
+        FROM App\Entity\Evenement s
+        JOIN s.users c
+        WHERE s.id= : 3
+         ";
+        $qb = $this->createQueryBuilder('s');
+        $qb->select('s','c')
+        ->from(Evenement::class, 's')
+            ->andWhere('s.popularity >= 10')
+            ->join('s.seasons', 'seas')
+            ->Select('s')
+            ->addSelect('c')
+            ->addOrderBy('s.vote', 'DESC');
+        $qb->setMaxResults(30);
+        $query = $qb->getQuery();
+        return new Paginator($query);*/
+
     }
 
 

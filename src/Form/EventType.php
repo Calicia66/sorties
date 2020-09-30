@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Lieu;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -53,11 +54,11 @@ class EventType extends AbstractType
             ->add('descriptioninfos', TextareaType::class, [    'attr' => ['class' => 'form-control'],
                 'label'=> 'Description de l evenement'])
 
-           /*Création du champ ville
-            ->add('ville', EntityType::class, [ 'class' => Ville::class,
-               'label' => 'nom_ville'
+          // Création du champ ville
+            ->add('lieux', EntityType::class, [ 'class' => Lieu::class,
+               'choice_label' => 'nom_lieu'
            ])
-           */
+
 
         ;
                 /*

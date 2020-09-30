@@ -91,9 +91,11 @@
 
                             <td> {{event.datedebut|date("Y-m-d")  }}</td>
                             <td> {{event.datecloture|date("Y-m-d")  }}</td>
-                            {#  <td> {{ event.place }}</td>#}                       <td> {{ event.etatsortie }}</td>
-                            {#  <td> {{ event.inscrit }}</td> #}                       <td> <a href="{{ path('evenement_list', {pseudo: event.organisateur}) }}"> {{ event.organisateur }}</a></td>
-                            {# <td> {{ event.actions}}</td>  #}                   </tr>
+                                                <td> {{ event.places }}</td>
+                                                  <td>{{ event.etatsortie }} </td>
+                            <td> bouton à faire</td>
+                            <td><a href="{{ path('evenement_list', {pseudo: event.organisateur}) }}"> {{ event.organisateur }}</a></td>
+                                               <td>action</td></tr>
 
                     {%  endfor %}
 
