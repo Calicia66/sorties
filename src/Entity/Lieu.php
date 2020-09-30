@@ -59,6 +59,8 @@ class Lieu
 
 
 
+
+
     //Générer les getters et setters
     /**
      * @return mixed
@@ -169,7 +171,7 @@ class Lieu
     {
         if (!$this->evenements->contains($evenement)) {
             $this->evenements[] = $evenement;
-            $evenement->addLieux($this);
+            $evenement->setLieux($this);
         }
 
         return $this;
@@ -179,11 +181,17 @@ class Lieu
     {
         if ($this->evenements->contains($evenement)) {
             $this->evenements->removeElement($evenement);
-            $evenement->removeLieux($this);
+            // set the owning side to null (unless already changed)
+            if ($evenement->getLieux() === $this) {
+                $evenement->setLieux(null);
+            }
         }
 
         return $this;
     }
+
+
+
 
 
 

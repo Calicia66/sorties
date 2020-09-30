@@ -85,48 +85,18 @@
         {# Afficher le formulaire qui permet d'entrer des données  et mettre un bouton Validation #}
 
         <div class="form-control">
-            <i class="fa fa-calendar"></i> {{ form_label(lieuform.nom_lieu) }}
-            {{ form_widget(lieuform.nom_lieu) }}
+            <i class="fa fa-calendar"></i>
+            {{ form_label(eventform.lieux) }}
+            {{ form_widget(eventform.lieux) }}
 
-            <small>{{ form_help(lieuform.nom_lieu) }}</small>
-
-            <div class="form-error">
-                {{ form_errors(lieuform.nom_lieu) }}
-            </div>
-        </div>
-
-        <div class="form-control">
-            <i class="fa fa-calendar"></i> {{ form_label(lieuform.rue) }}
-            {{ form_widget(lieuform.rue) }}
-
-            <small>{{ form_help(lieuform.rue) }}</small>
+            <small>{{ form_help(eventform.lieux) }}</small>
 
             <div class="form-error">
-                {{ form_errors(lieuform.rue) }}
+                {{ form_errors(eventform.lieux) }}
             </div>
+
         </div>
 
-        <div class="form-control">
-            <i class="fa fa-calendar"></i> {{ form_label(lieuform.longitude) }}
-            {{ form_widget(lieuform.longitude) }}
-
-            <small>{{ form_help(lieuform.longitude) }}</small>
-
-            <div class="form-error">
-                {{ form_errors(lieuform.longitude) }}
-            </div>
-        </div>
-
-        <div class="form-control">
-            <i class="fa fa-calendar"></i> {{ form_label(lieuform.latitude) }}
-            {{ form_widget(lieuform.latitude) }}
-
-            <small>{{ form_help(lieuform.latitude) }}</small>
-
-            <div class="form-error">
-                {{ form_errors(lieuform.latitude) }}
-            </div>
-        </div>
     </div>
     <div class="btn btn-action">
         <button TYPE="submit" class="btn btn-primary">Enregistrer</button>

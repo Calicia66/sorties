@@ -9,6 +9,7 @@ use App\Entity\Ville;
 use App\Form\EventType;
 use App\Form\LieuType;
 use App\Form\VilleType;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,13 +31,15 @@ class EvenementController extends AbstractController
         //récupérer les sorties en base de donnée
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
         //findAll permet de récupérer toute les sorties enregistrées.
-        $event = $eventRepo->findAll();
+        $events = $eventRepo->findBy([],["organisateur"=>"ASC"],10);
+
+
         //Permet d'aller récupérer les campus
         $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
         $campus = $campusRepo->findAll();
 
         return $this->render('evenement/list.html.twig', [
-            "events" => $event, "campus" => $campus
+            "events" => $events, "campus" => $campus,
         ]);
     }
 
@@ -71,19 +74,21 @@ class EvenementController extends AbstractController
      */
     //méthode create qui permet d'afficher sur une page le formulaire
     //qui enregistre les données en BDD
-    public function add(EntityManagerInterface $em, Request $request)
+    public function add(EntityManagerInterface $em, Request $request, UserInterface $user)
     {
         // Creer une instance de mon entity
         $event = new Evenement();
-        $lieu = new Lieu();
+        //$lieu = new Lieu();
         //  On récupère le nom du campus de l'utilisateur courant
         //Creer mon formulaire
         $eventform = $this->createForm(EventType::class, $event);
-        $lieuform = $this->createForm(LieuType::class, $lieu);
-        //  $campusform = $this->createForm(LieuType::class, $campus);
+       // $lieuform = $this->createForm(LieuType::class, $lieu);
+        //  $campusform = $this->createForm(LieuType::class, $campus)
+        //On fait appelle à l'utisateur courant en tant qu'organisateur
+        $event->setOrganisateur($user->getUsername());
         //Alimenter avec les données fournis dans le formulaire
         $eventform->handleRequest($request);
-        $lieuform->handleRequest($request);
+        //$lieuform->handleRequest($request);
         // $campusform->handleRequest($request);
         //Champs cachés
         //  $event->getOrganisateur();
@@ -93,7 +98,7 @@ class EvenementController extends AbstractController
         //si formulaire valider alors  données sauvegarder
         if ($eventform->isSubmitted() && $eventform->isValid()) {
             $em->persist($event);
-            $em->persist($lieu);
+            //$em->persist($lieu);
             //  $em->persist($campus);
             $em->flush();
 
@@ -108,7 +113,7 @@ class EvenementController extends AbstractController
         }
         return $this->render('evenement/add.html.twig', [
             "eventform" => $eventform->createView(),
-            "lieuform" => $lieuform->createView()
+
 
         ]);
     }
@@ -159,7 +164,52 @@ class EvenementController extends AbstractController
 
             ]);
         }
+    /**
+     * @Route("/suscribe/{event}", name="evenement_suscribe")
+     */
+    //méthode create qui permet d'afficher sur une page le formulaire
+    //qui enregistre les données en BDD
+    public function suscribe(EntityManagerInterface $em, Request $request,
+                             Evenement $event, UserInterface $user)
+    {
+        // Creer une instance de mon entity
 
+        $event->addUser($user);
+        $lieu = $event->getLieux();
+        //  On récupère le nom du campus de l'utilisateur courant
+        //Creer mon formulaire
+        $eventform = $this->createForm(EventType::class, $event);
+        $lieuform = $this->createForm(LieuType::class, $lieu);
+        //  $campusform = $this->createForm(LieuType::class, $campus);
+        //Alimenter avec les données fournis dans le formulaire
+
+
+        // $campusform->handleRequest($request);
+        //Champs cachés
+        //  $event->getOrganisateur();
+        // $event->setEtatsortie();
+
+
+        //si formulaire valider alors  données sauvegarder
+        if (!is_null($event) &&!is_null($user)) {
+             $em->persist($event);
+
+            $em->flush();
+
+            //Afficher un message flash
+            $this->addFlash('success', 'Votre participation a été ajoutée');
+
+
+            //Redirige l utilisateur sur la page detail
+            return $this->redirectToRoute('evenement_detail', [
+                'id' => $event->getId()
+            ]);
+        }
+
+        return $this->render('evenement_detail', [
+            'id' => $event->getId()
+        ]);
+    }
     /**
      * @Route("/evenement/switch", name="evenement_switch")
      */
@@ -205,15 +255,16 @@ class EvenementController extends AbstractController
     {
         // Creer une instance de mon entity
         $lieu = new Lieu();
-        $ville = new Ville();
+        //$ville = new Ville();
+
 
         //Creer mon formulaire
         $lieuform = $this->createForm(LieuType::class, $lieu);
-        $villeform = $this->createForm(VilleType::class, $ville);
+        //$villeform = $this->createForm(VilleType::class, $ville);
 
         //Alimenter avec les données fournis dans le formulaire
         $lieuform->handleRequest($request);
-        $villeform->handleRequest($request);
+        //$villeform->handleRequest($request);
 
         //Champs cachés
         // $event->getOrganisateur();
@@ -223,7 +274,7 @@ class EvenementController extends AbstractController
         //si formulaire valider alors  données sauvegarder
         if ($lieuform->isSubmitted()&& $lieuform->isValid()){
             $em->persist($lieu);
-            $em->persist($ville);
+            //$em->persist($ville);
             $em->flush();
 
             //Afficher un message flash
@@ -239,7 +290,7 @@ class EvenementController extends AbstractController
 
         return $this->render('evenement/add_lieu.html.twig', [
             "lieuform"=> $lieuform->createView(),
-            "villeform"=> $villeform->createView()
+
         ]);
     }
 

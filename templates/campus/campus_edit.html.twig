@@ -14,7 +14,6 @@
     <div class="container">
         <div class="row">
             <div class="campus list">
-                {#  <form method="post" action="{ }"></form> #}
                 <table class="table">
                     <thead>
                     <tr>
@@ -27,25 +26,27 @@
                     <tr>
 
                         <td>  <ul class="list-group">
-                         {%  for camp in campus %}
+                                {%  for camp in campusList %}
 
 
 
                                     <li class="list-group-item list-group-item-light">
-                                        <input type="text" id="libelle" name="libelle">
+                                        <a href="{{ path('main', {id: camp.id}) }}" > <span>{{ camp.libelle }}</span></a>
                                     </li>
 
-                            {%  endfor %}
+                                {%  endfor %}
                             </ul>
                         </td>
 
 
                         <td>  <ul class="list-group">
-                                {%  for camp in campus %}
+                                {%  for camp in campusList %}
+
+
 
                                     <li  class="list-group-item list-group-item-light">
 
-                                        <span ><a href="{{ path('campus', {id: camp.id}) }}"> <span>Valider</span></a></span>
+                                        <span ><a href="{{ path('campus_edit', {id: camp.id}) }}"> <span>Modifier</span></a></span>
                                         <span>&nbsp;</span>
                                         <span ><a href="{{ path('main', {id: camp.id}) }}"> <span>Supprimer</span></a></span>
                                     </li>
@@ -56,12 +57,37 @@
                     </tbody>
                 </table>
 
+
+            </div>
+        </div>
+        <div class="row">
+            {{ form_start(campusform) }}
+            <div class="campus_site input-group mb-3">
+
+
+
+
+                <div class="form-control">
+                    <i class="fa fa-calendar"></i> {{ form_label(campusform.libelle) }}
+                    {{ form_widget(campusform.libelle) }}
+
+                    <small>{{ form_help(campusform.libelle) }}</small>
+
+                    <div class="form-error">
+                        {{ form_errors(campusform.libelle) }}
+                    </div>
+                </div>
+
+
                 <div class="btn btn-action">
                     <button TYPE="submit" class="btn btn-primary">Enregistrer</button>
                 </div>
             </div>
+            {{ form_end(campusform) }}
         </div>
+
     </div>
+
 
 
     <div class="btn btn_back">

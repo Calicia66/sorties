@@ -1,56 +1,28 @@
 {% extends 'layout.html.twig' %}
 
 {% block main %}
+    {{ form_start(lieuform) }}
     <h2 class="text-center" > Ajout d'un lieu </h2>
     <div class="form-group">
 
+        {% form_theme lieuform 'bootstrap_4_layout.html.twig' %}
+        {{  form_start(lieuform) }}
 
 
-        {# Afficher le formulaire qui permet d'entrer des données  et mettre un bouton Validation #}
-        {{ form_start(lieuform) }}
+        {{ form_widget(lieuform) }}
+        {{ form_errors(lieuform) }}
 
-        <div class="form-group"> Nom de lieu
-            {{ form_label(lieuform.nom_lieu) }}
-            {{ form_widget(lieuform.nom_lieu) }}
-            {{ form_end(lieuform.nom_lieu) }}
-        </div>
-        <div class="form-group"> Rue
-            {{ form_label(lieuform.rue) }}
-            {{ form_widget(lieuform.rue) }}
-            {{ form_end(lieuform.rue) }}
-        </div>
-        <div class="form-group"> Longitude
-            {{ form_label(lieuform.longitude) }}
-            {{ form_widget(lieuform.longitude) }}
-            {{ form_end(lieuform.longitude) }}
-        </div>
-        <div class="form-group"> Latitude
-            {{ form_label(lieuform.latitude) }}
-            {{ form_widget(lieuform.latitude) }}
-            {{ form_end(lieuform.latitude) }}
-        </div>
-        {#  Nom de la ville  #}
-        <div class="form-group">
-            {{ form_label(villeform.nom_ville) }}
-            {{ form_widget(villeform.nom_ville) }}
-            {{ form_end(villeform.nom_ville) }}
-        </div>
-        {#  Code Postal #}
-        <div class="form-group">
-            {{ form_label(villeform.code_postal) }}
-            {{ form_widget(villeform.code_postal) }}
-            {{ form_end(villeform.code_postal) }}
-        </div>
+        <br>
 
 
 
         <button TYPE="submit" class="btn btn-primary">Valider</button>
         <button type="reset" class="btn btn-primary">Annuler</button>
         <button type="button" onclick="goBack()" class="btn btn-primary">Retour</button>
-
+        {{ form_end(lieuform) }}
     </div>
 
-    {{ form_end(lieuform) }}
+
 {% endblock %}
 
 {% block title %} Ajoutez votre lieu |{{ parent() }}{% endblock %}

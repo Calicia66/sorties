@@ -33,7 +33,6 @@ class SecurityController extends AbstractController
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
-
     public function accountInfo()
     {
         // allow any authenticated user - we don't care if they just

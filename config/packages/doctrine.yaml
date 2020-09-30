@@ -1,5 +1,7 @@
 doctrine:
     dbal:
+        schema_filter: ~^(?!rememberme_token)~
+
         url: '%env(resolve:DATABASE_URL)%'
         schema_filter: ~^(?!rememberme_token)~
 

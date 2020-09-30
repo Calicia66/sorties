@@ -24,10 +24,15 @@ class LieuType extends AbstractType
                 'label'=> 'Entrez votre latitude'])
             ->add('longitude', TextType::class, [    'attr' => ['class' => 'form-control'],
                 'label'=> 'Entrez votre longitude'])
+        ->add('ville', EntityType::class, [
+        'class' => Ville::class,
+        'choice_label' => 'nom_ville',])
+    ;
 
 
 
-        ;
+
+
     }
 
 

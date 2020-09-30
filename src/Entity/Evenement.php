@@ -76,8 +76,6 @@ class Evenement
      */
     private $users;
 
-
-    //cascade={persist}
     /**
      * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="evenements")
      */
@@ -86,7 +84,7 @@ class Evenement
     public function __construct()
     {
         $this->users = new ArrayCollection();
-        $this->lieux = new ArrayCollection();
+
     }
 
 
@@ -255,7 +253,7 @@ class Evenement
     }
 
     /**
-     * @return Collection|User[]
+     * @return Collection|User
      */
     public function getUsers(): Collection
     {
@@ -280,31 +278,21 @@ class Evenement
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getLieux()
+    public function getLieux(): ?Lieu
     {
         return $this->lieux;
     }
 
-    public function addLieux(Lieu $lieux): self
+    public function setLieux(?Lieu $lieux): self
     {
-        if (!$this->lieux->contains($lieux)) {
-            $this->lieux[] = $lieux;
-        }
+        $this->lieux = $lieux;
 
         return $this;
     }
 
-    public function removeLieux(Lieu $lieux): self
-    {
-        if ($this->lieux->contains($lieux)) {
-            $this->lieux->removeElement($lieux);
-        }
 
-        return $this;
-    }
+
+
 
 
 
