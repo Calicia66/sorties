@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Evenement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,36 +20,19 @@ class EvenementRepository extends ServiceEntityRepository
         parent::__construct($registry, Evenement::class);
     }
 
-    public function findByCampus(): ?Evenement
+    public function findByCampus($value)
     {
-
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.id = :val')
-            ->setParameter('val', 'mama')
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult();
-
-        /* Version avec DQL*/
-        /* version avec Query Builder
-        $em = $this->getEntityManager();
-        $dql = "SELECT s,c
-        FROM App\Entity\Evenement s
-        JOIN s.users c
-        WHERE s.id= : 3
-         ";
-        $qb = $this->createQueryBuilder('s');
-        $qb->select('s','c')
-        ->from(Evenement::class, 's')
-            ->andWhere('s.popularity >= 10')
-            ->join('s.seasons', 'seas')
-            ->Select('s')
-            ->addSelect('c')
-            ->addOrderBy('s.vote', 'DESC');
-        $qb->setMaxResults(30);
-        $query = $qb->getQuery();
-        return new Paginator($query);*/
+//On fait un select basé sur l'id du campus fournit par l'utilisateur connecté
+        $em=$this->getEntityManager();
+        $dql="
+            SELECT e
+            FROM App\Entity\Evenement e
+            JOIN e.users o
+            WHERE o.campus = :campus";
+        $query=$em->createQuery($dql);
+        $query->setParameter('campus',$value);
+        $query->setMaxResults(20);
+        return $query->getResult();
 
     }
 

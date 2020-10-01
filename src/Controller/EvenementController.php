@@ -5,13 +5,9 @@ namespace App\Controller;
 use App\Entity\Campus;
 use App\Entity\Evenement;
 use App\Entity\Lieu;
-use App\Entity\Ville;
 use App\Form\EventType;
 use App\Form\LieuType;
-use App\Form\VilleType;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,13 +22,13 @@ class EvenementController extends AbstractController
      * @Route("/list", name="evenement_list")
      */
     //méthode list qui permet d'afficher sur une page la liste des évènements enregistrés en BDD
-    public function list(EntityManagerInterface $em)
+    public function list()
     {
         //récupérer les sorties en base de donnée
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
         //findAll permet de récupérer toute les sorties enregistrées.
-        $events = $eventRepo->findBy([],["organisateur"=>"ASC"],10);
-
+       //events = $eventRepo->findBy([],["organisateur"=>"ASC"],10);
+$events= $eventRepo->findAll();
 
         //Permet d'aller récupérer les campus
         $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
@@ -42,15 +38,37 @@ class EvenementController extends AbstractController
             "events" => $events, "campus" => $campus,
         ]);
     }
+    /**
+     * @Route("/list/{id}", name="evenement_list_campus")
+     * @param $id
+     * @return mixed
+     */
+    //méthode list qui permet d'afficher sur une page la liste des évènements enregistrés en BDD
+    public function listByCampus($id)
+    {
+        //récupérer la listes des sorties dans la base de donnée
+        $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
+        //On filtre selon le campus
 
+        $events= $eventRepo->findByCampus($id);
+
+        //Permet d'aller récupérer les campus
+        $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
+        $campus = $campusRepo->findAll();
+
+        return $this->render('evenement/list.html.twig', [
+            "events" => $events, "campus" => $campus,
+        ]);
+    }
     /**
      * @Route("/detail/{id}", name="evenement_detail", requirements={"id": "\d+"})
+     * @param $id
      */
     //méthode detail qui permet d'afficher sur une page un évènement particulier enregistré en BDD
     public function detail($id)
     {
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
-        $event = $eventRepo->findByEvent($id);
+        $event = $eventRepo->find($id);
 
         return $this->render('evenement/detail.html.twig', [
             "event" => $event
@@ -63,7 +81,7 @@ class EvenementController extends AbstractController
     public function edit_detail($id)
     {
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
-        $event = $eventRepo->findByEvent($id);
+        $event = $eventRepo->find($id);
 
         return $this->render('evenement/switch.html.twig', [
             "events" => $event
@@ -76,24 +94,21 @@ class EvenementController extends AbstractController
     //qui enregistre les données en BDD
     public function add(EntityManagerInterface $em, Request $request, UserInterface $user)
     {
-        // Creer une instance de mon entity
+        // Création d'une instance de mon entity
         $event = new Evenement();
-        //$lieu = new Lieu();
+
         //  On récupère le nom du campus de l'utilisateur courant
-        //Creer mon formulaire
+        //Génération du formulaire
         $eventform = $this->createForm(EventType::class, $event);
-       // $lieuform = $this->createForm(LieuType::class, $lieu);
-        //  $campusform = $this->createForm(LieuType::class, $campus)
+
         //On fait appelle à l'utisateur courant en tant qu'organisateur
         $event->setOrganisateur($user->getUsername());
-        //Alimenter avec les données fournis dans le formulaire
+        //On alimente avec les données fournis dans le formulaire
         $eventform->handleRequest($request);
-        //$lieuform->handleRequest($request);
-        // $campusform->handleRequest($request);
-        //Champs cachés
+
+        //Champs cachés à completer
         //  $event->getOrganisateur();
         // $event->setEtatsortie();
-
 
         //si formulaire valider alors  données sauvegarder
         if ($eventform->isSubmitted() && $eventform->isValid()) {
@@ -131,11 +146,11 @@ class EvenementController extends AbstractController
             //Creer mon formulaire
             $eventform = $this->createForm(EventType::class, $event);
             $lieuform = $this->createForm(LieuType::class, $lieu);
-            //  $campusform = $this->createForm(LieuType::class, $campus);
+
             //Alimenter avec les données fournis dans le formulaire
             $eventform->handleRequest($request);
             $lieuform->handleRequest($request);
-            // $campusform->handleRequest($request);
+
             //Champs cachés
             //  $event->getOrganisateur();
             // $event->setEtatsortie();
@@ -143,14 +158,11 @@ class EvenementController extends AbstractController
 
             //si formulaire valider alors  données sauvegarder
             if ($eventform->isSubmitted() && $eventform->isValid()) {
-               // $em->persist($event);
-               // $em->persist($lieu);
-                //  $em->persist($campus);
+
                 $em->flush();
 
                 //Afficher un message flash
                 $this->addFlash('success', 'Votre evenement a bien été enregistré');
-
 
                 //Redirige l utilisateur sur la page detail
                 return $this->redirectToRoute('evenement_detail', [
@@ -169,8 +181,7 @@ class EvenementController extends AbstractController
      */
     //méthode create qui permet d'afficher sur une page le formulaire
     //qui enregistre les données en BDD
-    public function suscribe(EntityManagerInterface $em, Request $request,
-                             Evenement $event, UserInterface $user)
+    public function suscribe(EntityManagerInterface $em, Evenement $event, UserInterface $user)
     {
         // Creer une instance de mon entity
 
@@ -180,15 +191,10 @@ class EvenementController extends AbstractController
         //Creer mon formulaire
         $eventform = $this->createForm(EventType::class, $event);
         $lieuform = $this->createForm(LieuType::class, $lieu);
-        //  $campusform = $this->createForm(LieuType::class, $campus);
-        //Alimenter avec les données fournis dans le formulaire
 
-
-        // $campusform->handleRequest($request);
         //Champs cachés
         //  $event->getOrganisateur();
         // $event->setEtatsortie();
-
 
         //si formulaire valider alors  données sauvegarder
         if (!is_null($event) &&!is_null($user)) {
@@ -214,7 +220,7 @@ class EvenementController extends AbstractController
      * @Route("/evenement/switch", name="evenement_switch")
      */
     //méthode switch qui permet d'afficher sur une page de modifier les données
-    public function switch(EntityManagerInterface $em)
+    public function switch()
     {
         //récupérer les sorties en base de donnée
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
@@ -231,7 +237,7 @@ class EvenementController extends AbstractController
      * @Route("/evenement/cancel", name="evenement_cancel")
      */
     //méthode cancel qui permet d annuler une sortie
-    public function cancel(EntityManagerInterface $em)
+    public function cancel()
     {
         //récupérer les sorties en base de donnée
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
@@ -255,8 +261,6 @@ class EvenementController extends AbstractController
     {
         // Creer une instance de mon entity
         $lieu = new Lieu();
-        //$ville = new Ville();
-
 
         //Creer mon formulaire
         $lieuform = $this->createForm(LieuType::class, $lieu);
