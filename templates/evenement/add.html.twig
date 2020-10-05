@@ -64,6 +64,19 @@
                 {{ form_errors(eventform.datecloture) }}
             </div>
         </div>
+
+
+        <div class="form-control">
+            <i class="fa fa-calendar"></i> {{ form_label(eventform.places) }}
+            {{ form_widget(eventform.places) }}
+
+            <small>{{ form_help(eventform.places) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(eventform.places) }}
+            </div>
+        </div>
+
     </div>
     <div class="campus_site input-group mb-3">
 

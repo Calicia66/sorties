@@ -51,6 +51,11 @@ class EventType extends AbstractType
 
                 'label'=> "Date de fin"
             ])
+
+            //Creation du champ duree
+            ->add('places',NumberType::class,[  'attr' => ['class' => 'form-control'],
+                'label'=> "Places"])
+
             ->add('descriptioninfos', TextareaType::class, [    'attr' => ['class' => 'form-control'],
                 'label'=> 'Description de l evenement'])
 

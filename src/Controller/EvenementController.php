@@ -27,15 +27,16 @@ class EvenementController extends AbstractController
         //récupérer les sorties en base de donnée
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
         //findAll permet de récupérer toute les sorties enregistrées.
-       //events = $eventRepo->findBy([],["organisateur"=>"ASC"],10);
-$events= $eventRepo->findAll();
-
+        $events= $eventRepo->findAll();
+        $user=$this->getUser();
+        $inscrits= $eventRepo->findInscrit($user);
+        $totalEvent=count($events);
         //Permet d'aller récupérer les campus
         $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
         $campus = $campusRepo->findAll();
 
         return $this->render('evenement/list.html.twig', [
-            "events" => $events, "campus" => $campus,
+            "events" => $events, "campus" => $campus,"inscrits"=>$inscrits,
         ]);
     }
     /**
@@ -43,21 +44,22 @@ $events= $eventRepo->findAll();
      * @param $id
      * @return mixed
      */
-    //méthode list qui permet d'afficher sur une page la liste des évènements enregistrés en BDD
+    //méthode list qui permet d'afficher sur une page la liste des campus des évènements enregistrés en BDD
     public function listByCampus($id)
     {
-        //récupérer la listes des sorties dans la base de donnée
+        //récupérer la liste des sorties dans la base de donnée
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
         //On filtre selon le campus
-
         $events= $eventRepo->findByCampus($id);
-
+        //permet de récupérer les utilisateurs
+        $user=$this->getUser();
+        $inscrits= $eventRepo->findInscrit($user);
         //Permet d'aller récupérer les campus
         $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
         $campus = $campusRepo->findAll();
 
         return $this->render('evenement/list.html.twig', [
-            "events" => $events, "campus" => $campus,
+            "events" => $events, "campus" => $campus, "inscrits" => $inscrits
         ]);
     }
     /**
@@ -77,7 +79,7 @@ $events= $eventRepo->findAll();
     /**
      * @Route("/edit/{id}", name="evenement_edit", requirements={"id": "\d+"})
      */
-    //méthode detail qui permet d'afficher sur une page un évènement particulier enregistré en BDD
+    //méthode detail qui permet d'éditer sur une page un évènement particulier enregistré en BDD
     public function edit_detail($id)
     {
         $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
@@ -90,7 +92,7 @@ $events= $eventRepo->findAll();
     /**
      * @Route("/add", name="evenement_add")
      */
-    //méthode create qui permet d'afficher sur une page le formulaire
+    //méthode add qui permet d'afficher sur une page le formulaire
     //qui enregistre les données en BDD
     public function add(EntityManagerInterface $em, Request $request, UserInterface $user)
     {
@@ -110,7 +112,7 @@ $events= $eventRepo->findAll();
         //  $event->getOrganisateur();
         // $event->setEtatsortie();
 
-        //si formulaire valider alors  données sauvegarder
+        //si formulaire validé alors  données sauvegarder
         if ($eventform->isSubmitted() && $eventform->isValid()) {
             $em->persist($event);
             //$em->persist($lieu);
@@ -135,8 +137,8 @@ $events= $eventRepo->findAll();
         /**
          * @Route("/edit/{id}", name="evenement_edit")
          */
-        //méthode create qui permet d'afficher sur une page le formulaire
-        //qui enregistre les données en BDD
+        //méthode edit qui permet d'afficher sur une page le formulaire
+        //qui modifie les données en BDD
     public function edit(EntityManagerInterface $em, Request $request, Evenement $id)
         {
             // Creer une instance de mon entity
@@ -156,7 +158,7 @@ $events= $eventRepo->findAll();
             // $event->setEtatsortie();
 
 
-            //si formulaire valider alors  données sauvegarder
+            //si formulaire validé alors  données sauvegarder
             if ($eventform->isSubmitted() && $eventform->isValid()) {
 
                 $em->flush();
@@ -176,46 +178,7 @@ $events= $eventRepo->findAll();
 
             ]);
         }
-    /**
-     * @Route("/suscribe/{event}", name="evenement_suscribe")
-     */
-    //méthode create qui permet d'afficher sur une page le formulaire
-    //qui enregistre les données en BDD
-    public function suscribe(EntityManagerInterface $em, Evenement $event, UserInterface $user)
-    {
-        // Creer une instance de mon entity
 
-        $event->addUser($user);
-        $lieu = $event->getLieux();
-        //  On récupère le nom du campus de l'utilisateur courant
-        //Creer mon formulaire
-        $eventform = $this->createForm(EventType::class, $event);
-        $lieuform = $this->createForm(LieuType::class, $lieu);
-
-        //Champs cachés
-        //  $event->getOrganisateur();
-        // $event->setEtatsortie();
-
-        //si formulaire valider alors  données sauvegarder
-        if (!is_null($event) &&!is_null($user)) {
-             $em->persist($event);
-
-            $em->flush();
-
-            //Afficher un message flash
-            $this->addFlash('success', 'Votre participation a été ajoutée');
-
-
-            //Redirige l utilisateur sur la page detail
-            return $this->redirectToRoute('evenement_detail', [
-                'id' => $event->getId()
-            ]);
-        }
-
-        return $this->render('evenement_detail', [
-            'id' => $event->getId()
-        ]);
-    }
     /**
      * @Route("/evenement/switch", name="evenement_switch")
      */
@@ -250,13 +213,12 @@ $events= $eventRepo->findAll();
         ]);
     }
 
-    //Création du formulaire Lieu
 
     /**
      * @Route("/add_lieu", name="add_lieu")
      */
-    //méthode create qui permet d'afficher sur une page le formulaire
-    //qui enregistre les données en BDD
+    //méthode add_lieu qui permet d'afficher sur une page le formulaire
+    //qui enregistre les lieux des évènements en BDD
     public function add_lieu(EntityManagerInterface $em, Request $request)
     {
         // Creer une instance de mon entity
@@ -275,10 +237,9 @@ $events= $eventRepo->findAll();
         // $event->setEtatsortie();
 
 
-        //si formulaire valider alors  données sauvegarder
+        //si formulaire validé alors  données sauvegarder
         if ($lieuform->isSubmitted()&& $lieuform->isValid()){
             $em->persist($lieu);
-            //$em->persist($ville);
             $em->flush();
 
             //Afficher un message flash
@@ -299,51 +260,63 @@ $events= $eventRepo->findAll();
     }
 
     /**
-     * @Route("/suscribe/{event}", name="event_suscribe")
+     * @Route("/suscribe/{event}", name="evenement_suscribe")
      */
-    public function suscribe (EntityManagerInterface $em, Request $request, Evenement $id)
+//méthode suscribe qui permet de s'enregistrer comme participant à un évènement
+    public function suscribe(EntityManagerInterface $em, Evenement $event, UserInterface $user)
     {
-// Creer une instance de mon entity
-        $event = $id;
+        // Creer une instance de mon entity
+
+        $event->addUser($user);
         $lieu = $event->getLieux();
         //  On récupère le nom du campus de l'utilisateur courant
         //Creer mon formulaire
         $eventform = $this->createForm(EventType::class, $event);
         $lieuform = $this->createForm(LieuType::class, $lieu);
-        //  $campusform = $this->createForm(LieuType::class, $campus);
-        //Alimenter avec les données fournis dans le formulaire
-        $eventform->handleRequest($request);
-        $lieuform->handleRequest($request);
-        // $campusform->handleRequest($request);
-        //Champs cachés
-        //  $event->getOrganisateur();
-        // $event->setEtatsortie();
 
 
-        //si formulaire valider alors  données sauvegarder
-        if ($eventform->isSubmitted() && $eventform->isValid()) {
-            // $em->persist($event);
-            // $em->persist($lieu);
-            //  $em->persist($campus);
+        //si formulaire validé alors  données sauvegarder
+        if (!is_null($event) &&!is_null($user)) {
+            $em->persist($event);
             $em->flush();
 
             //Afficher un message flash
-            $this->addFlash('success', 'Votre evenement a bien été enregistré');
-
+            $this->addFlash('success', 'Votre participation a été ajoutée');
 
             //Redirige l utilisateur sur la page detail
             return $this->redirectToRoute('evenement_detail', [
                 'id' => $event->getId()
             ]);
-
         }
-        return $this->render('evenement/add_lieu.html.twig', [
-            "lieuform"=> $lieuform->createView(),
-            "eventform"=> $eventform->createView()
+
+        return $this->render('evenement_detail', [
+            'id' => $event->getId()
         ]);
+    }
 
 
+    /**
+     * @Route("/query/", name="evenement_query")
+     * @param $id
+     * @return mixed
+     */
+    //méthode listQuery qui permet d'afficher sur une page la liste des évènements enregistrés en BDD
+    public function listQuery(UserInterface $user)
+    {
+        //récupérer la listes des sorties dans la base de donnée
+        $eventRepo = $this->getDoctrine()->getRepository(Evenement::class);
+        //On filtre selon l'utilisateur
+        $u = $user->getUsername();
+        $user = $this->getUser();
+        $inscrits= $eventRepo->findInscrit($user);
+        $events= $eventRepo->findByOwner($u);
+        //Permet d'aller récupérer les campus
+        $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
+        $campus = $campusRepo->findAll();
 
+        return $this->render('evenement/list.html.twig', [
+            "events" => $events, "campus" => $campus, "inscrits" => $inscrits
+        ]);
     }
 
 

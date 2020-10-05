@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Evenement;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
@@ -36,14 +37,38 @@ class EvenementRepository extends ServiceEntityRepository
 
     }
 
-    public function findByCampus()
+    public function findByOwner($value)
     {
-
+//On fait un select basé sur l'id du campus fournit par l'utilisateur connecté
         $qb = $this->createQueryBuilder('e');
-        $qb->andWhere('e.campus = Nantes');
-        $qb->setMaxResults(20);
+        $qb->andWhere('e.organisateur = :val')
+            ->setParameter('val', $value)
+            ->orderBy('e.id', 'ASC')
+        ;
+        $qb->setMaxResults(30);
         $query = $qb->getQuery();
+        return new Paginator($query);
+    }
+
+
+    public function findInscrit(User $user)
+    {
+//On fait un select basé sur l'id du campus fournit par l'utilisateur connecté
+        $id= $user->getId();
+        $em=$this->getEntityManager();
+        $dql="
+            SELECT e
+            FROM App\Entity\Evenement e
+            JOIN e.users o
+            WHERE o.id = :userId";
+        $query=$em->createQuery($dql);
+        $query->setParameter('userId',$id);
+        $query->setMaxResults(20);
         return $query->getResult();
+    }
+
+
+
 
 
         /*
@@ -56,7 +81,7 @@ class EvenementRepository extends ServiceEntityRepository
         $query->setMaxResults(20);
         return $query->getResult();
         */
-    }
+
 
 
 
